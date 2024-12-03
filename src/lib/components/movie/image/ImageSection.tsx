@@ -21,6 +21,7 @@ const ImageSection = ({ title, data, maxHeight }: ImageSectionProps) => {
         <Flex alignItems="center" gridGap={4} minHeight={360}>
           {data.map((image) => (
             <Link
+              key={image.file_path}
               display="contents"
               href={`${IMAGE_URL_ORIGINAL}${image.file_path}`}
               isExternal

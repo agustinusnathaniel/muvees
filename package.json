@@ -2,12 +2,17 @@
   "name": "muvees",
   "version": "1.3.4",
   "private": true,
-  "author": "sozonome",
+  "author": "agustinusnathaniel",
+  "engines": {
+    "node": ">=22.11.x",
+    "pnpm": ">=9"
+  },
+  "packageManager": "pnpm@9.13.2",
   "scripts": {
     "preinstall": "npx only-allow pnpm",
     "dev": "next dev",
     "lint": "next lint",
-    "turbo": "pnpm dlx turbo@2.0.14",
+    "turbo": "pnpm dlx turbo@2.3.3",
     "lint:fix": "eslint src --fix && pnpm format",
     "build": "next build",
     "build:turbo": "pnpm turbo build",
@@ -56,10 +61,5 @@
     "prettier": "^3.4.1",
     "standard-version": "^9.5.0",
     "typescript": "^5.7.2"
-  },
-  "engines": {
-    "node": ">=20.x.x",
-    "pnpm": ">=9"
-  },
-  "packageManager": "pnpm@9.6.0"
+  }
 }

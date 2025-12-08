@@ -1,11 +1,10 @@
 import { AspectRatio, Box } from '@chakra-ui/react';
-import Link from 'next/link';
-
 import MotionBox from 'lib/components/MotionBox';
 import PosterImage from 'lib/components/shared/PosterImage';
 import PosterLabel from 'lib/components/shared/PosterLabel';
 import type { MediaType } from 'lib/services/tmdb/search/multi/types';
 import { trackEvent } from 'lib/utils/trackEvent';
+import Link from 'next/link';
 
 const pathMap: Record<MediaType, string> = {
   movie: '/movie',

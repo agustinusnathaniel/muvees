@@ -8,8 +8,8 @@ import {
   Input,
   Modal,
   ModalBody,
-  ModalContent,
   ModalCloseButton,
+  ModalContent,
   ModalFooter,
   ModalHeader,
   ModalOverlay,
@@ -17,12 +17,11 @@ import {
   Text,
   useDisclosure,
 } from '@chakra-ui/react';
-import Link from 'next/link';
-import type { ChangeEvent } from 'react';
-import { useState, useMemo } from 'react';
-
 import { IMAGE_URL } from 'lib/components/shared/PosterImage';
 import type { MovieCreditsResponse } from 'lib/services/tmdb/movie/credits/types';
+import Link from 'next/link';
+import type { ChangeEvent } from 'react';
+import { useMemo, useState } from 'react';
 
 type CastsWrapperProps = {
   isLoadingCredits?: boolean;
@@ -43,7 +42,7 @@ const CastsWrapper = ({ isLoadingCredits, credits }: CastsWrapperProps) => {
         .filter(
           (unfilteredCast) =>
             unfilteredCast.name.toLowerCase().indexOf(keyword.toLowerCase()) >
-            -1
+            -1,
         )
         .map((movieCast) => (
           <Flex

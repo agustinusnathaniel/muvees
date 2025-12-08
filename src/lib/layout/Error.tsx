@@ -2,6 +2,7 @@ import { Button, Grid, Heading } from '@chakra-ui/react';
 import Image from 'next/image';
 import Link from 'next/link';
 
+// biome-ignore lint/suspicious/noShadowRestrictedNames: -
 const Error = () => {
   return (
     <Grid marginX={8}>

@@ -1,13 +1,12 @@
-import type { NextApiRequest, NextApiResponse } from 'next';
-
 import { tmdbServerFetcher } from 'lib/services/tmdb/utils';
+import type { NextApiRequest, NextApiResponse } from 'next';
 
 const tmdbAPI = async (req: NextApiRequest, res: NextApiResponse) => {
   const {
     query: { path, ...params },
   } = req;
 
-  const requestPath = `/${(path as string[]).join('/')}`;
+  const requestPath = `/${(path as Array<string>).join('/')}`;
 
   const data = await tmdbServerFetcher(requestPath, params);
 

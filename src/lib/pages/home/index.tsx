@@ -1,5 +1,4 @@
 import { Grid } from '@chakra-ui/react';
-
 import MoviesSlider from 'lib/components/movie/MoviesSlider';
 import TvShowSlider from 'lib/components/tv/TvShowSlider';
 

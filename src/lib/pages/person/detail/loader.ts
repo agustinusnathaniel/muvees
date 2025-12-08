@@ -1,6 +1,5 @@
-import type { GetStaticProps } from 'next';
-
 import { getPersonDetailServer } from 'lib/services/tmdb/person/detail';
+import type { GetStaticProps } from 'next';
 
 import type { PersonDetailPageParams, PersonDetailPageProps } from './types';
 

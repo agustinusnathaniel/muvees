@@ -1,4 +1,4 @@
-import { Skeleton, Grid, Button, Text } from '@chakra-ui/react';
+import { Button, Grid, Skeleton, Text } from '@chakra-ui/react';
 
 export type PageNavButtonProps = {
   isLoading: boolean;

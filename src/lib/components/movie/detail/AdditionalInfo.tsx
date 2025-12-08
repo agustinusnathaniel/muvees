@@ -1,18 +1,17 @@
 import {
   Button,
+  Link as ChakraLink,
   Flex,
   Grid,
   Heading,
-  Link as ChakraLink,
   Skeleton,
   Text,
 } from '@chakra-ui/react';
+import { convertToPrice } from 'lib/utils/convertToPrice';
 import Link from 'next/link';
 import { BiLinkExternal } from 'react-icons/bi';
 import { FaImdb } from 'react-icons/fa';
 import { GrGallery } from 'react-icons/gr';
-
-import { convertToPrice } from 'lib/utils/convertToPrice';
 
 import type { MovieDetailSectionProps } from './types';
 

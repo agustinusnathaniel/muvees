@@ -1,6 +1,3 @@
-import Link from 'next/link';
-import { useRouter } from 'next/router';
-
 import { ChipButton } from 'lib/components/shared/ChipButton';
 import PosterCard from 'lib/components/shared/PosterCard';
 import SliderContainer from 'lib/components/shared/SliderContainer';
@@ -9,6 +6,8 @@ import type {
   TVShowItem,
   TVShowListType,
 } from 'lib/services/tmdb/tv/list/types';
+import Link from 'next/link';
+import { useRouter } from 'next/router';
 
 type TvShowListTypeButtonProps = {
   listType: TVShowListType;

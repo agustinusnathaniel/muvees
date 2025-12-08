@@ -26,7 +26,7 @@ const movieListEndpoint = ({
 
 export const getMovieListServer = (
   section: ListType = 'popular',
-  params?: MovieListParams
+  params?: MovieListParams,
 ) =>
   tmdbServerFetcher<MovieListResponse>(
     movieListEndpoint({
@@ -34,14 +34,14 @@ export const getMovieListServer = (
       query: params?.query,
       with_genres: params?.with_genres,
     }),
-    params
+    params,
   );
 
 export const useMovieList = (
   section: ListType = 'popular',
   params?: MovieListParams,
   fallbackData?: MovieListResponse,
-  isReady?: boolean
+  isReady?: boolean,
 ) =>
   useTmdbSWR<MovieListResponse>({
     path: movieListEndpoint({

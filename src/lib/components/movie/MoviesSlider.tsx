@@ -1,6 +1,3 @@
-import Link from 'next/link';
-import { useRouter } from 'next/router';
-
 import { ChipButton } from 'lib/components/shared/ChipButton';
 import PosterCard from 'lib/components/shared/PosterCard';
 import SliderContainer from 'lib/components/shared/SliderContainer';
@@ -9,6 +6,8 @@ import type {
   MovieListItemType,
 } from 'lib/services/tmdb/movie/list/types';
 import { MediaType } from 'lib/services/tmdb/search/multi/types';
+import Link from 'next/link';
+import { useRouter } from 'next/router';
 
 type MovieListTypeButtonProps = {
   listType: ListType;

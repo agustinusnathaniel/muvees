@@ -1,12 +1,11 @@
 import { Button, Grid } from '@chakra-ui/react';
-import { useRouter } from 'next/router';
-import { NextSeo } from 'next-seo';
-import { useEffect, useState } from 'react';
-
 import MovieDetailAdditionalInfo from 'lib/components/movie/detail/AdditionalInfo';
 import CastsWrapper from 'lib/components/movie/detail/CastsWrapper';
 import MovieDetailMeta from 'lib/components/movie/detail/Meta';
 import { handleRouteBack } from 'lib/utils/handleRouteBack';
+import { useRouter } from 'next/router';
+import { NextSeo } from 'next-seo';
+import { useEffect, useState } from 'react';
 
 import type { MovieDetailPageProps } from './types';
 

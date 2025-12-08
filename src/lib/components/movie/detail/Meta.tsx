@@ -1,7 +1,6 @@
 import { Badge, Flex, useColorMode } from '@chakra-ui/react';
-import Link from 'next/link';
-
 import DetailMeta from 'lib/components/shared/DetailMeta';
+import Link from 'next/link';
 
 import type { MovieDetailSectionProps } from './types';
 

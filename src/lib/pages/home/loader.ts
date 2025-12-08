@@ -1,8 +1,7 @@
-import type { GetStaticProps } from 'next';
-
 import type { HomePageProps } from 'lib/pages/home/types';
 import { getMovieListServer } from 'lib/services/tmdb/movie/list';
 import { getTVShowByListType } from 'lib/services/tmdb/tv/list';
+import type { GetStaticProps } from 'next';
 
 // eslint-disable-next-line import/prefer-default-export
 export const getStaticProps: GetStaticProps<HomePageProps> = async () => {

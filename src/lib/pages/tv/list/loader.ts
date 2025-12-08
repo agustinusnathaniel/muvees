@@ -1,19 +1,18 @@
-import type { GetStaticProps } from 'next';
-
 import type { TVShowListType } from 'lib/services/tmdb/tv/list/types';
 import { TVShowList } from 'lib/services/tmdb/tv/list/types';
+import type { GetStaticProps } from 'next';
 
-import type { TVShowListPageProps, TVShowListPageParams } from './types';
+import type { TVShowListPageParams, TVShowListPageProps } from './types';
 
 export { getStaticPaths } from 'lib/utils/defaultGetStaticPaths';
 
 export const getStaticProps: GetStaticProps<
   TVShowListPageProps,
   TVShowListPageParams
-> = async (ctx) => {
+> = (ctx) => {
   const { params } = ctx;
 
-  if (!params?.listType || !(params.listType in TVShowList)) {
+  if (!(params?.listType && params.listType in TVShowList)) {
     return {
       notFound: true,
     };

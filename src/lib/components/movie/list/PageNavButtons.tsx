@@ -1,7 +1,6 @@
-import { Skeleton, Grid, Button, Text } from '@chakra-ui/react';
-import { useRouter } from 'next/router';
-
+import { Button, Grid, Skeleton, Text } from '@chakra-ui/react';
 import type { MovieListResponse } from 'lib/services/tmdb/movie/list/types';
+import { useRouter } from 'next/router';
 
 import type { MovieListModeKey } from './types';
 

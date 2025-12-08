@@ -20,7 +20,7 @@ const SearchBox = () => {
 
       router.push(`/movies/search${queryParam}`);
     }, 500),
-    []
+    [],
   );
 
   return (

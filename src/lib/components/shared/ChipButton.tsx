@@ -13,5 +13,5 @@ export const ChipButton = forwardRef<ButtonProps, 'button'>(
         {children}
       </Button>
     );
-  }
+  },
 );

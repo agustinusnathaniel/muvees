@@ -16,10 +16,9 @@ import {
   useDisclosure,
   useMediaQuery,
 } from '@chakra-ui/react';
+import { APP_NAME } from 'pages/_document';
 import { useEffect, useState } from 'react';
 import { BiMenu } from 'react-icons/bi';
-
-import { APP_NAME } from 'pages/_document';
 
 type AppsType = {
   name: string;

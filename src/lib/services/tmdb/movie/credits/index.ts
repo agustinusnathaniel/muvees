@@ -8,7 +8,7 @@ export const getMovieCreditsServer = (id: number) =>
 export const useMovieCredits = (
   id: number,
   fallbackData?: MovieCreditsResponse,
-  isReady?: boolean
+  isReady?: boolean,
 ) =>
   useTmdbSWR<MovieCreditsResponse>({
     path: `/movie/${id}/credits`,

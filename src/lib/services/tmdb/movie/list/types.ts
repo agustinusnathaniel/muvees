@@ -6,7 +6,7 @@ export type MovieListParams = {
   language?: string;
   page?: number;
   query?: string;
-  with_genres?: string | string[];
+  with_genres?: string | Array<string>;
 };
 
 export type TMovieListParams = Pick<

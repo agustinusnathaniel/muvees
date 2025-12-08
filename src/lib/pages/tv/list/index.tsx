@@ -1,10 +1,9 @@
 import { Grid, Heading, Text } from '@chakra-ui/react';
-import { useRouter } from 'next/router';
-
 import type { PageNavButtonProps } from 'lib/components/shared/list/PageNavButtons';
 import PageNavButtons from 'lib/components/shared/list/PageNavButtons';
 import TvShowListContainer from 'lib/components/tv/TvShowListContainer';
 import { useTVShowByList } from 'lib/services/tmdb/tv/list';
+import { useRouter } from 'next/router';
 
 import type { TVShowListPageProps } from './types';
 

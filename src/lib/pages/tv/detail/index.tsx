@@ -1,9 +1,8 @@
 import { Badge, Button, Flex, Grid, useColorMode } from '@chakra-ui/react';
-import { useRouter } from 'next/router';
-import { NextSeo } from 'next-seo';
-
 import DetailMeta from 'lib/components/shared/DetailMeta';
 import { handleRouteBack } from 'lib/utils/handleRouteBack';
+import { useRouter } from 'next/router';
+import { NextSeo } from 'next-seo';
 
 import type { TvShowDetailPageProps } from './types';
 

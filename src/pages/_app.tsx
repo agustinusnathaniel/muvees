@@ -5,9 +5,10 @@ import { DefaultSeo } from 'next-seo';
 import NextNprogress from 'nextjs-progressbar';
 import '@fontsource/outfit/latin.css';
 
-import defaultSEOConfig from '../../next-seo.config';
 import Layout from 'lib/layout';
 import customTheme from 'lib/styles/theme';
+
+import defaultSEOConfig from '../../next-seo.config';
 import 'lib/styles/globals.css';
 
 const MyApp = ({ Component, pageProps }: AppProps) => {

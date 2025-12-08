@@ -1,8 +1,7 @@
-import { Flex, Heading, IconButton, Grid } from '@chakra-ui/react';
+import { Flex, Grid, Heading, IconButton } from '@chakra-ui/react';
+import { trackEvent } from 'lib/utils/trackEvent';
 import Link from 'next/link';
 import { GoSearch } from 'react-icons/go';
-
-import { trackEvent } from 'lib/utils/trackEvent';
 
 import AppMenu from './AppMenu';
 import ThemeToggle from './ThemeToggle';

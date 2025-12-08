@@ -1,7 +1,6 @@
-import type { GetStaticProps } from 'next';
-
 import { getMovieCreditsServer } from 'lib/services/tmdb/movie/credits';
 import { getMovieDetailServer } from 'lib/services/tmdb/movie/detail';
+import type { GetStaticProps } from 'next';
 
 import type { MovieDetailPageParams, MovieDetailPageProps } from './types';
 

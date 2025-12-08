@@ -1,5 +1,4 @@
 import { Box, Flex, Heading, Link } from '@chakra-ui/react';
-
 import PosterImage, {
   IMAGE_URL_ORIGINAL,
 } from 'lib/components/shared/PosterImage';

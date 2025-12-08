@@ -1,8 +1,4 @@
 import { Box, Button, Heading } from '@chakra-ui/react';
-import { useRouter } from 'next/router';
-import { NextSeo } from 'next-seo';
-import { useEffect, useState } from 'react';
-
 import MoviesContainer from 'lib/components/movie/MoviesContainer';
 import SearchBox from 'lib/components/movie/SearchBox';
 import { useMovieList } from 'lib/services/tmdb/movie/list';
@@ -10,6 +6,9 @@ import type {
   ListType,
   MovieListParams,
 } from 'lib/services/tmdb/movie/list/types';
+import { useRouter } from 'next/router';
+import { NextSeo } from 'next-seo';
+import { useEffect, useState } from 'react';
 
 import type { PageNavButtonProps } from './PageNavButtons';
 import PageNavButtons from './PageNavButtons';
@@ -55,14 +54,13 @@ const MovieListContainer = ({ listMode }: MovieListContainerProps) => {
           break;
       }
     }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [page, query, genre]);
+  }, [page, query, genre, listMode]);
 
   const { data, isLoading } = useMovieList(
     listMode === 'section' ? (section as ListType) : undefined,
     queries,
     undefined,
-    listMode === 'search' ? shouldFetch : undefined
+    listMode === 'search' ? shouldFetch : undefined,
   );
 
   useEffect(() => {
@@ -78,7 +76,7 @@ const MovieListContainer = ({ listMode }: MovieListContainerProps) => {
   }, []);
 
   useEffect(() => {
-    if (data && data.total_pages) {
+    if (data?.total_pages) {
       setTotalPages(data.total_pages);
     }
   }, [data]);
@@ -126,7 +124,7 @@ const MovieListContainer = ({ listMode }: MovieListContainerProps) => {
           </Heading>
         )}
         <PageNavButtons {...pageNavButtonProps} />
-        <MoviesContainer movies={data && data.results} isLoading={isLoading} />
+        <MoviesContainer movies={data?.results} isLoading={isLoading} />
         <PageNavButtons {...pageNavButtonProps} />
       </>
     );

@@ -1,13 +1,12 @@
 import { Grid, Input, Skeleton, Text } from '@chakra-ui/react';
-import debounce from 'lodash/debounce';
-import { useRouter } from 'next/router';
-import * as React from 'react';
-
 import type { PageNavButtonProps } from 'lib/components/shared/list/PageNavButtons';
 import PageNavButtons from 'lib/components/shared/list/PageNavButtons';
 import PosterCard from 'lib/components/shared/PosterCard';
 import { BASE_URL } from 'lib/constants/baseUrl';
 import { useMultiSearchResult } from 'lib/services/tmdb/search/multi';
+import debounce from 'lodash/debounce';
+import { useRouter } from 'next/router';
+import * as React from 'react';
 
 const MultiSearchPage = () => {
   const router = useRouter();
@@ -23,7 +22,7 @@ const MultiSearchPage = () => {
       page,
       query,
     },
-    query?.length > 0
+    query?.length > 0,
   );
 
   // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -35,7 +34,7 @@ const MultiSearchPage = () => {
 
       router.push(`/search${queryParam}`);
     }, 500),
-    []
+    [],
   );
 
   const handleChangePage = React.useCallback(
@@ -44,7 +43,7 @@ const MultiSearchPage = () => {
       queryParams.set('page', updatedPage.toString());
       router.push(`${asPath.split('?')[0]}?${queryParams.toString()}`);
     },
-    [asPath, router]
+    [asPath, router],
   );
 
   const handleClickNext = React.useCallback(() => {
@@ -64,7 +63,7 @@ const MultiSearchPage = () => {
       onClickNext: handleClickNext,
       onClickPrev: handleClickPrev,
     }),
-    [data?.total_pages, handleClickNext, handleClickPrev, isLoading, page]
+    [data?.total_pages, handleClickNext, handleClickPrev, isLoading, page],
   );
 
   const resultWrapper = React.useMemo(() => {

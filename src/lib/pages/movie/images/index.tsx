@@ -1,7 +1,6 @@
 import { Button, Grid, Heading } from '@chakra-ui/react';
-import { useRouter } from 'next/router';
-
 import ImageSection from 'lib/components/movie/image/ImageSection';
+import { useRouter } from 'next/router';
 
 import type { MovieImagesPageProps } from './types';
 

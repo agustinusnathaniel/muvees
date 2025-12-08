@@ -14,7 +14,7 @@ export interface MultiSearchParams {
 
 export interface MultiSearchResponse {
   page: number;
-  results: MultiSearchResult[];
+  results: Array<MultiSearchResult>;
   total_results: number;
   total_pages: number;
 }
@@ -28,8 +28,8 @@ export interface MultiSearchResult {
   vote_average?: number;
   media_type: MediaType;
   first_air_date?: string;
-  origin_country?: string[];
-  genre_ids?: number[];
+  origin_country?: Array<string>;
+  genre_ids?: Array<number>;
   original_language?: OriginalLanguage;
   vote_count?: number;
   name?: string;
@@ -40,7 +40,7 @@ export interface MultiSearchResult {
   title?: string;
   video?: boolean;
   profile_path?: null | string;
-  known_for?: MultiSearchResult[];
+  known_for?: Array<MultiSearchResult>;
 }
 
 export enum MediaType {

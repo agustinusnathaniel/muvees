@@ -8,7 +8,6 @@ import {
   Text,
   useColorMode,
 } from '@chakra-ui/react';
-
 import { BionifiedParagraph } from 'lib/components/BionifiedParagraph';
 import PosterImage from 'lib/components/shared/PosterImage';
 

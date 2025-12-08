@@ -1,10 +1,10 @@
 import {
   Box,
   Button,
-  Heading,
-  Text,
-  Image,
   Link as ChakraLink,
+  Heading,
+  Image,
+  Text,
   useColorMode,
 } from '@chakra-ui/react';
 import Link from 'next/link';

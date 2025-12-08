@@ -7,12 +7,11 @@ import {
   Skeleton,
   Text,
 } from '@chakra-ui/react';
-import { useRouter } from 'next/router';
-
 import { BionifiedParagraph } from 'lib/components/BionifiedParagraph';
 import PosterImage from 'lib/components/shared/PosterImage';
 import { usePersonDetail } from 'lib/services/tmdb/person/detail';
 import { countAge } from 'lib/utils/countAge';
+import { useRouter } from 'next/router';
 
 const PersonDetailPage = () => {
   const router = useRouter();

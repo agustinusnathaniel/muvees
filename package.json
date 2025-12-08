@@ -16,7 +16,7 @@
     "preinstall": "npx only-allow pnpm",
     "dev": "next dev",
     "lint": "next lint",
-    "turbo": "pnpm dlx turbo@2.6.5",
+    "turbo": "pnpm dlx turbo@2.6.3",
     "lint:fix": "eslint src --fix && pnpm format",
     "build": "next build",
     "build:turbo": "pnpm turbo build",

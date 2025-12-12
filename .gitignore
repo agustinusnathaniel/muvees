@@ -45,8 +45,5 @@ sitemap*.xml
 # TS
 *.tsbuildinfo
 
-# VS Code
-.vscode/settings.json
-
 # Turbo
 .turbo

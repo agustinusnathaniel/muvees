@@ -5,9 +5,9 @@
       "outputs": [".next/**", "!.next/cache/**", "public/**"],
       "env": ["TMDB_API_URL", "TMDB_API_KEY", "NEXT_PUBLIC_PROJECTS_LIST_URL"]
     },
-    "lint": {
+    "biome:check": {
       "outputs": [],
-      "inputs": [".eslintrc.*", "src/**"]
+      "inputs": ["biome.json", "src/**"]
     },
     "type-check": {
       "outputs": ["*.tsbuildinfo"]

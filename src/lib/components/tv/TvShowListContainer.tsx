@@ -16,12 +16,12 @@ const TvShowListContainer = ({
     <GridContainer isLoading={isLoading}>
       {shows?.map((show) => (
         <PosterCard
-          name={show.name}
           id={show.id ?? 0}
           imageUrl={show.poster_path}
-          mediaType={MediaType.Tv}
           key={`${show.name}-${show.id}`}
           layout="grid"
+          mediaType={MediaType.Tv}
+          name={show.name}
         />
       ))}
     </GridContainer>

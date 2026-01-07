@@ -6,8 +6,9 @@ import type {
   ListType,
   MovieListParams,
 } from 'lib/services/tmdb/movie/list/types';
+import Head from 'next/head';
 import { useRouter } from 'next/router';
-import { NextSeo } from 'next-seo';
+import { generateNextSeo } from 'next-seo/pages';
 import { useEffect, useState } from 'react';
 
 import type { PageNavButtonProps } from './PageNavButtons';
@@ -60,7 +61,7 @@ const MovieListContainer = ({ listMode }: MovieListContainerProps) => {
     listMode === 'section' ? (section as ListType) : undefined,
     queries,
     undefined,
-    listMode === 'search' ? shouldFetch : undefined,
+    listMode === 'search' ? shouldFetch : undefined
   );
 
   useEffect(() => {
@@ -124,16 +125,16 @@ const MovieListContainer = ({ listMode }: MovieListContainerProps) => {
           </Heading>
         )}
         <PageNavButtons {...pageNavButtonProps} />
-        <MoviesContainer movies={data?.results} isLoading={isLoading} />
+        <MoviesContainer isLoading={isLoading} movies={data?.results} />
         <PageNavButtons {...pageNavButtonProps} />
       </>
     );
   };
 
   return (
-    <Box mb={8} w="full" paddingX={8}>
-      {data && <NextSeo title={generatePageHeadTitle()} />}
-      <Button borderRadius={24} width="full" onClick={() => router.push('/')}>
+    <Box mb={8} paddingX={8} w="full">
+      <Head>{data && generateNextSeo({ title: generatePageHeadTitle() })}</Head>
+      <Button borderRadius={24} onClick={() => router.push('/')} width="full">
         back
       </Button>
 

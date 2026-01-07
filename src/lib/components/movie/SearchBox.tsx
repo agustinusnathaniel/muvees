@@ -20,18 +20,18 @@ const SearchBox = () => {
 
       router.push(`/movies/search${queryParam}`);
     }, 500),
-    [],
+    []
   );
 
   return (
     <FormControl marginY={2}>
       <Input
-        type="text"
+        borderRadius={24}
         defaultValue={query}
+        fontSize="sm"
         onChange={handleChangeQuery}
         placeholder="Movie Title"
-        borderRadius={24}
-        fontSize="sm"
+        type="text"
       />
     </FormControl>
   );

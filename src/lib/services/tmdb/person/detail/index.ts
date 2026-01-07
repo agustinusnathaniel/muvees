@@ -8,7 +8,7 @@ export const getPersonDetailServer = (id: number) =>
 export const usePersonDetail = (
   id: number,
   fallbackData?: PersonDetailResponse,
-  isReady?: boolean,
+  isReady?: boolean
 ) =>
   useTmdbSWR<PersonDetailResponse>({
     path: `/person/${id}`,

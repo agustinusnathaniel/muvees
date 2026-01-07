@@ -1,3 +1,1 @@
-import MultiSearchPage from 'lib/pages/search/multi';
-
-export default MultiSearchPage;
+export * as MultiSearchPage from 'lib/pages/search/multi';

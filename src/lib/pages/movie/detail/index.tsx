@@ -3,8 +3,9 @@ import MovieDetailAdditionalInfo from 'lib/components/movie/detail/AdditionalInf
 import CastsWrapper from 'lib/components/movie/detail/CastsWrapper';
 import MovieDetailMeta from 'lib/components/movie/detail/Meta';
 import { handleRouteBack } from 'lib/utils/handleRouteBack';
+import Head from 'next/head';
 import { useRouter } from 'next/router';
-import { NextSeo } from 'next-seo';
+import { generateNextSeo } from 'next-seo/pages';
 import { useEffect, useState } from 'react';
 
 import type { MovieDetailPageProps } from './types';
@@ -27,10 +28,15 @@ const MovieDetailPage = ({
   }, [id]);
 
   return (
-    <Grid paddingX={8} gridGap={[8, 16]}>
-      <NextSeo title={data.title} description={data.tagline} />
+    <Grid gridGap={[8, 16]} paddingX={8}>
+      <Head>
+        {generateNextSeo({
+          description: data.tagline,
+          title: data.title,
+        })}
+      </Head>
 
-      <Grid rowGap={8} flexBasis={['100%']}>
+      <Grid flexBasis={['100%']} rowGap={8}>
         <Button onClick={handleRouteBack(router)} width={['full', 'full', 100]}>
           back
         </Button>
@@ -39,10 +45,10 @@ const MovieDetailPage = ({
       </Grid>
 
       <Grid
-        gap={8}
         alignItems="center"
-        templateColumns={{ base: 'minmax(0, 1fr)', md: '1fr minmax(0, 2fr)' }}
         flexBasis={['100%']}
+        gap={8}
+        templateColumns={{ base: 'minmax(0, 1fr)', md: '1fr minmax(0, 2fr)' }}
       >
         <MovieDetailAdditionalInfo data={data} id={movieId ?? 0} />
 

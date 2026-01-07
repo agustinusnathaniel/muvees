@@ -8,7 +8,7 @@ export const getMovieDetailServer = (id: number) =>
 export const useMovieDetail = (
   id: number,
   fallbackData?: MovieDetailResponse,
-  isReady?: boolean,
+  isReady?: boolean
 ) =>
   useTmdbSWR<MovieDetailResponse>({
     path: `/movie/${id}`,

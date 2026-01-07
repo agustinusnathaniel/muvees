@@ -50,16 +50,16 @@ const AppMenu = () => {
   return (
     <>
       <IconButton
-        marginLeft={2}
         aria-label="app-menu"
-        icon={<BiMenu />}
         background="none"
+        icon={<BiMenu />}
+        marginLeft={2}
         onClick={onOpen}
       />
       <Drawer
-        placement={isBiggerThanMobile ? 'right' : 'top'}
         isOpen={isOpen}
         onClose={onClose}
+        placement={isBiggerThanMobile ? 'right' : 'top'}
       >
         <DrawerOverlay />
 
@@ -73,18 +73,18 @@ const AppMenu = () => {
             {apps
               .filter((app) => app.name !== APP_NAME)
               .map(({ name, icon, url, description }) => (
-                <Link key={name} href={url} _hover={{ textDecoration: 'none' }}>
+                <Link _hover={{ textDecoration: 'none' }} href={url} key={name}>
                   <Flex
-                    marginY={4}
-                    alignItems="center"
-                    padding={2}
-                    borderRadius={12}
                     _hover={{
                       backgroundColor:
                         colorMode === 'light' ? 'gray.200' : 'gray.600',
                     }}
+                    alignItems="center"
+                    borderRadius={12}
+                    marginY={4}
+                    padding={2}
                   >
-                    <Image src={icon} width={12} alt={name} />
+                    <Image alt={name} src={icon} width={12} />
                     <Box marginLeft={4}>
                       <Heading size="sm">{name}</Heading>
                       {description && <Text fontSize="xs">{description}</Text>}

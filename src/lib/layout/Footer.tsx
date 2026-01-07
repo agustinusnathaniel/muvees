@@ -3,7 +3,7 @@ import Image from 'next/image';
 
 const Footer = () => {
   return (
-    <Flex as="footer" width="full" align="center" padding="8">
+    <Flex align="center" as="footer" padding="8" width="full">
       <Text fontSize="sm">
         2020 -{' '}
         <Link fontWeight="bold" href="https://sznm.dev" isExternal>
@@ -12,11 +12,11 @@ const Footer = () => {
       </Text>
 
       <Grid gap={1} marginLeft="auto" textAlign="right">
-        <Text textTransform="lowercase" fontSize="0.6rem">
+        <Text fontSize="0.6rem" textTransform="lowercase">
           Powered by
         </Text>
         <Link href="https://themoviedb.org" isExternal>
-          <Image src="/tmdb.svg" width="50" height="20" alt="tmdb" />
+          <Image alt="tmdb" height="20" src="/tmdb.svg" width="50" />
         </Link>
       </Grid>
     </Flex>

@@ -14,7 +14,7 @@ export const getStaticProps: GetStaticProps<HomePageProps> = async () => {
         popularMovieData,
         popularTvShowData,
       },
-      revalidate: 43200,
+      revalidate: 43_200,
     };
   } catch {
     return { notFound: true };

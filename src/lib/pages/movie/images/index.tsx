@@ -16,11 +16,11 @@ const MovieImagesPage = ({ data }: MovieImagesPageProps) => {
       <Heading marginX={8}>Images</Heading>
 
       {data?.backdrops && (
-        <ImageSection title="Backdrops" data={data.backdrops} maxHeight={300} />
+        <ImageSection data={data.backdrops} maxHeight={300} title="Backdrops" />
       )}
 
       {data?.posters && (
-        <ImageSection title="Posters" data={data.posters} maxHeight={200} />
+        <ImageSection data={data.posters} maxHeight={200} title="Posters" />
       )}
     </Grid>
   );

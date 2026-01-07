@@ -1,5 +1,2 @@
-import TVShowList from 'lib/pages/tv/list';
-
-export default TVShowList;
-
+export * as TVShowList from 'lib/pages/tv/list';
 export { getStaticPaths, getStaticProps } from 'lib/pages/tv/list/loader';

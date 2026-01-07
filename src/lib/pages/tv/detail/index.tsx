@@ -1,8 +1,9 @@
 import { Badge, Button, Flex, Grid, useColorMode } from '@chakra-ui/react';
 import DetailMeta from 'lib/components/shared/DetailMeta';
 import { handleRouteBack } from 'lib/utils/handleRouteBack';
+import Head from 'next/head';
 import { useRouter } from 'next/router';
-import { NextSeo } from 'next-seo';
+import { generateNextSeo } from 'next-seo/pages';
 
 import type { TvShowDetailPageProps } from './types';
 
@@ -11,10 +12,15 @@ const TvShowDetailPage = ({ data }: TvShowDetailPageProps) => {
   const { colorMode } = useColorMode();
 
   return (
-    <Grid paddingX={8} gridGap={[8, 16]}>
-      <NextSeo title={data.name} description={data.tagline} />
+    <Grid gridGap={[8, 16]} paddingX={8}>
+      <Head>
+        {generateNextSeo({
+          description: data.tagline,
+          title: data.name,
+        })}
+      </Head>
 
-      <Grid rowGap={8} flexBasis={['100%']}>
+      <Grid flexBasis={['100%']} rowGap={8}>
         <Button onClick={handleRouteBack(router)} width={['full', 'full', 100]}>
           back
         </Button>
@@ -29,13 +35,13 @@ const TvShowDetailPage = ({ data }: TvShowDetailPageProps) => {
             overview: data.overview,
           }}
           extras={
-            <Flex wrap="wrap" gridGap={2}>
+            <Flex gridGap={2} wrap="wrap">
               {data.genres.map((genre) => (
                 <Badge
-                  cursor="pointer"
-                  variant={colorMode === 'light' ? 'solid' : 'outline'}
                   colorScheme="gray"
+                  cursor="pointer"
                   key={`${genre.name}-${genre.id}`}
+                  variant={colorMode === 'light' ? 'solid' : 'outline'}
                 >
                   {genre.name}
                 </Badge>

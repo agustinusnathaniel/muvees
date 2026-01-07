@@ -9,26 +9,26 @@ import ThemeToggle from './ThemeToggle';
 const Header = () => {
   const handleClickSearch = () => {
     trackEvent({
-      eventName: `Nav Link: Search`,
+      eventName: 'Nav Link: Search',
       eventData: { type: 'navigate' },
     });
   };
 
   return (
-    <Flex as="header" width="full" align="center" padding="8">
+    <Flex align="center" as="header" padding="8" width="full">
       <Link href="/">
         <Heading as="h1" fontSize={['md', 'xl']}>
           muvees
         </Heading>
       </Link>
 
-      <Grid templateColumns="repeat(3, 1fr)" gap={1} marginLeft="auto">
-        <Link href="/search" passHref legacyBehavior>
+      <Grid gap={1} marginLeft="auto" templateColumns="repeat(3, 1fr)">
+        <Link href="/search" legacyBehavior passHref>
           <IconButton
-            as="a"
             aria-label="search"
-            icon={<GoSearch />}
+            as="a"
             background="none"
+            icon={<GoSearch />}
             onClick={handleClickSearch}
           />
         </Link>

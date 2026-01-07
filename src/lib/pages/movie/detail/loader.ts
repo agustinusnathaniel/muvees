@@ -28,7 +28,7 @@ export const getStaticProps: GetStaticProps<
         detailData,
         creditsData,
       },
-      revalidate: 604800,
+      revalidate: 604_800,
     };
   } catch {
     return {

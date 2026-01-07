@@ -9,7 +9,7 @@ import type {
 
 export const getTVShowByListType = (
   listType: TVShowListType,
-  params?: TVShowListParams,
+  params?: TVShowListParams
 ) => tmdbServerFetcher<TVShowListResponse>(`/tv/${listType}`, params);
 
 type UseTVShowByListArgs = {

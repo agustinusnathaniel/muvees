@@ -5,13 +5,13 @@ export const ChipButton = forwardRef<ButtonProps, 'button'>(
   ({ children, ...props }: ButtonProps, ref) => {
     return (
       <Button
+        ref={ref}
         size={{ base: 'xs', sm: 'sm' }}
         textTransform="capitalize"
-        ref={ref}
         {...props}
       >
         {children}
       </Button>
     );
-  },
+  }
 );

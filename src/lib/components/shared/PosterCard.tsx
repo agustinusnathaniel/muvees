@@ -37,32 +37,32 @@ const PosterCard = ({
   };
 
   return (
-    <Link href={`${pathMap[mediaType]}/${id}`} passHref legacyBehavior>
+    <Link href={`${pathMap[mediaType]}/${id}`} legacyBehavior passHref>
       <MotionBox
         as="a"
         onClick={handleClick}
+        paddingRight={isLastItem ? [8, 6] : undefined}
         position="relative"
+        role="group"
         textAlign="center"
         whileHover={{ scale: 1.05 }}
-        role="group"
-        paddingRight={isLastItem ? [8, 6] : undefined}
         {...(layout === 'flex' && { flex: '0 0 auto' })}
       >
         {layout === 'grid' ? (
           <AspectRatio
+            _groupHover={{ backgroundColor: 'black' }}
             borderRadius={24}
             ratio={3.6 / 5}
-            _groupHover={{ backgroundColor: 'black' }}
           >
-            <PosterImage src={imageUrl} layout={layout} />
+            <PosterImage layout={layout} src={imageUrl} />
           </AspectRatio>
         ) : (
           <Box
+            _groupHover={{ backgroundColor: 'black' }}
             as="button"
             borderRadius={24}
-            _groupHover={{ backgroundColor: 'black' }}
           >
-            <PosterImage src={imageUrl} layout={layout} />
+            <PosterImage layout={layout} src={imageUrl} />
           </Box>
         )}
         <PosterLabel label={name ?? ''} />

@@ -16,34 +16,34 @@ const SliderContainer = ({
   return (
     <Box>
       {sectionTitle && (
-        <Flex marginX={{ base: 8, sm: 0 }} alignItems="center">
+        <Flex alignItems="center" marginX={{ base: 8, sm: 0 }}>
           <Heading
-            textTransform="uppercase"
-            letterSpacing={2}
             fontSize={{ base: 'md', sm: 'lg' }}
             fontWeight="400"
+            letterSpacing={2}
+            textTransform="uppercase"
           >
             {sectionTitle}
           </Heading>
 
           <Button
             marginLeft="auto"
-            size={{ base: 'xs', sm: 'sm' }}
             onClick={onClickSeeMore}
+            size={{ base: 'xs', sm: 'sm' }}
           >
             see more
           </Button>
         </Flex>
       )}
 
-      <Flex paddingX={[8, 6]} overflowX="scroll">
+      <Flex overflowX="scroll" paddingX={[8, 6]}>
         <Flex
-          flexWrap="nowrap"
           alignItems="center"
-          minHeight="250px"
-          overflowX="scroll"
-          overflow="visible"
+          flexWrap="nowrap"
           gridColumnGap={6}
+          minHeight="250px"
+          overflow="visible"
+          overflowX="scroll"
         >
           {children}
         </Flex>

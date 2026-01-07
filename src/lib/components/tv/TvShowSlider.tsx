@@ -37,25 +37,25 @@ const TvShowSlider = ({ sectionTitle, shows }: TvShowSliderProps) => {
 
   const slicedShows = shows?.slice(0, 10);
 
-  const handleClickSeeMore = () => router.push(`/tv/popular?page=1`);
+  const handleClickSeeMore = () => router.push('/tv/popular?page=1');
 
   return (
     <SliderContainer
-      sectionTitle={sectionTitle}
-      onClickSeeMore={handleClickSeeMore}
       footer={tvShowListTypes.map((type) => (
         <TvShowListTypeButton key={type} listType={type} />
       ))}
+      onClickSeeMore={handleClickSeeMore}
+      sectionTitle={sectionTitle}
     >
       {slicedShows?.map((show, idx) => (
         <PosterCard
-          name={show.name}
           id={show.id ?? 0}
           imageUrl={show.poster_path}
-          mediaType={MediaType.Tv}
+          isLastItem={idx === slicedShows.length - 1}
           key={`${show.name}-${show.id}`}
           layout="flex"
-          isLastItem={idx === slicedShows.length - 1}
+          mediaType={MediaType.Tv}
+          name={show.name}
         />
       ))}
     </SliderContainer>

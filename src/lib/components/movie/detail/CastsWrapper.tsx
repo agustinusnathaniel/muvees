@@ -42,20 +42,20 @@ const CastsWrapper = ({ isLoadingCredits, credits }: CastsWrapperProps) => {
         .filter(
           (unfilteredCast) =>
             unfilteredCast.name.toLowerCase().indexOf(keyword.toLowerCase()) >
-            -1,
+            -1
         )
         .map((movieCast) => (
           <Flex
+            alignItems="center"
             as={Link}
+            cursor="pointer"
+            gridColumnGap={2}
             href={`/person/${movieCast.id}`}
             key={`${movieCast.name}-${movieCast.id}`}
-            cursor="pointer"
-            alignItems="center"
-            gridColumnGap={2}
           >
             <Avatar
-              size="lg"
               name={movieCast.name}
+              size="lg"
               src={`${IMAGE_URL}${movieCast.profile_path}`}
             />
             <Text>{movieCast.name}</Text>
@@ -70,21 +70,21 @@ const CastsWrapper = ({ isLoadingCredits, credits }: CastsWrapperProps) => {
     <Skeleton isLoaded={!isLoadingCredits}>
       {credits && (
         <Flex alignItems="center" gridGap={3} minHeight={24} overflowX="scroll">
-          <Button padding={8} borderRadius="50%" onClick={onOpen}>
+          <Button borderRadius="50%" onClick={onOpen} padding={8}>
             all
           </Button>
           {credits.cast.slice(0, 20).map((movieCast) => (
             <Avatar
               as={Link}
+              cursor="pointer"
               href={`/person/${movieCast.id}`}
               key={`${movieCast.name}-${movieCast.id}`}
-              cursor="pointer"
+              name={movieCast.name}
               size="lg"
               src={`${IMAGE_URL}${movieCast.profile_path}`}
-              name={movieCast.name}
             />
           ))}
-          <Button padding={8} borderRadius="50%" onClick={onOpen}>
+          <Button borderRadius="50%" onClick={onOpen} padding={8}>
             more
           </Button>
 
@@ -101,10 +101,10 @@ const CastsWrapper = ({ isLoadingCredits, credits }: CastsWrapperProps) => {
                 <Heading>Casts</Heading>
                 <FormControl marginY={2}>
                   <Input
-                    type="text"
-                    placeholder="search"
-                    value={keyword}
                     onChange={handleChangeKeyword}
+                    placeholder="search"
+                    type="text"
+                    value={keyword}
                   />
                 </FormControl>
               </ModalHeader>

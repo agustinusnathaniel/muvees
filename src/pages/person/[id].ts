@@ -1,3 +1,1 @@
-import PersonDetailPage from 'lib/pages/person/detail';
-
-export default PersonDetailPage;
+export * as PersonDetailPage from 'lib/pages/person/detail';

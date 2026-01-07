@@ -16,16 +16,16 @@ class MyDocument extends Document {
     return (
       <Html>
         <Head>
-          <meta name="application-name" content={APP_NAME} />
-          <meta name="apple-mobile-web-app-capable" content="yes" />
+          <meta content={APP_NAME} name="application-name" />
+          <meta content="yes" name="apple-mobile-web-app-capable" />
           <meta
-            name="apple-mobile-web-app-status-bar-style"
             content="default"
+            name="apple-mobile-web-app-status-bar-style"
           />
-          <meta name="apple-mobile-web-app-title" content={APP_NAME} />
-          <meta name="format-detection" content="telephone=no" />
-          <meta name="mobile-web-app-capable" content="yes" />
-          <meta name="theme-color" content="#FFFFFF" />
+          <meta content={APP_NAME} name="apple-mobile-web-app-title" />
+          <meta content="telephone=no" name="format-detection" />
+          <meta content="yes" name="mobile-web-app-capable" />
+          <meta content="#FFFFFF" name="theme-color" />
 
           {/* add your own app-icon */}
           {/* <link
@@ -33,16 +33,16 @@ class MyDocument extends Document {
             sizes="180x180"
             href="/icons/apple-touch-icon.png"
           /> */}
-          <link rel="icon" href="/popcorn.png" />
-          <link rel="manifest" href="/manifest.json" />
+          <link href="/popcorn.png" rel="icon" />
+          <link href="/manifest.json" rel="manifest" />
 
           {/* umami self-hosted analytics */}
           <script
             async
-            defer
-            data-website-id={UMAMI_WEBSITE_ID}
-            src={UMAMI_SRC}
             data-domains="muvees.sznm.dev"
+            data-website-id={UMAMI_WEBSITE_ID}
+            defer
+            src={UMAMI_SRC}
           />
         </Head>
         <body>

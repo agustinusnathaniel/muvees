@@ -7,17 +7,17 @@ type PosterLabelProps = {
 const PosterLabel = ({ label }: PosterLabelProps) => {
   return (
     <Text
-      textTransform="uppercase"
+      _groupHover={{ visibility: 'visible' }}
+      color="white"
       fontSize="xs"
-      letterSpacing={2}
-      textAlign="center"
-      position="absolute"
-      top="50%"
       left="50%"
+      letterSpacing={2}
+      position="absolute"
+      textAlign="center"
+      textTransform="uppercase"
+      top="50%"
       transform="translate(-50%, -50%)"
       visibility="hidden"
-      color="white"
-      _groupHover={{ visibility: 'visible' }}
     >
       {label}
     </Text>

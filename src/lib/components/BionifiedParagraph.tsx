@@ -36,8 +36,14 @@ export const BionifiedParagraph = ({
   return (
     <Text {...props}>
       {children?.split(' ').map((word, idx) => (
-        // eslint-disable-next-line react/no-array-index-key
-        <BionifiedWord key={`${word}-${idx}`}>{word}</BionifiedWord>
+        <BionifiedWord
+          key={`${word}-${
+            // biome-ignore lint/suspicious/noArrayIndexKey: -
+            idx
+          }`}
+        >
+          {word}
+        </BionifiedWord>
       ))}
     </Text>
   );

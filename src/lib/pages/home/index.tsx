@@ -6,10 +6,10 @@ import type { HomePageProps } from './types';
 
 const Home = ({ popularMovieData, popularTvShowData }: HomePageProps) => {
   return (
-    <Grid rowGap={8} mb={8} w="full" padding={[0, 8]}>
+    <Grid mb={8} padding={[0, 8]} rowGap={8} w="full">
       <MoviesSlider
-        sectionTitle="Popular Movies"
         movies={popularMovieData?.results}
+        sectionTitle="Popular Movies"
       />
       <TvShowSlider
         sectionTitle="Popular TV Shows"

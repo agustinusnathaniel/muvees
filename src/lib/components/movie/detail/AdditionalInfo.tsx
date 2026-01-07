@@ -31,7 +31,7 @@ const MovieDetailAdditionalInfo = ({
           <Flex gridColumnGap={2}>
             {data.homepage && (
               <ChakraLink _hover={undefined} href={data.homepage} isExternal>
-                <Button size="sm" leftIcon={<BiLinkExternal />}>
+                <Button leftIcon={<BiLinkExternal />} size="sm">
                   website
                 </Button>
               </ChakraLink>
@@ -41,7 +41,7 @@ const MovieDetailAdditionalInfo = ({
                 href={`https://www.imdb.com/title/${data.imdb_id}`}
                 isExternal
               >
-                <Button size="sm" leftIcon={<FaImdb />}>
+                <Button leftIcon={<FaImdb />} size="sm">
                   IMDB
                 </Button>
               </ChakraLink>
@@ -50,8 +50,8 @@ const MovieDetailAdditionalInfo = ({
             <Button
               as={Link}
               href={`/movie/${id}/images`}
-              size="sm"
               leftIcon={<GrGallery />}
+              size="sm"
             >
               gallery
             </Button>
@@ -63,10 +63,10 @@ const MovieDetailAdditionalInfo = ({
         <Heading fontSize="lg">Achievements</Heading>
 
         <Grid
-          gridGap={1}
-          textTransform="uppercase"
-          letterSpacing={2}
           fontSize="sm"
+          gridGap={1}
+          letterSpacing={2}
+          textTransform="uppercase"
         >
           <Text>
             Revenue:{' '}

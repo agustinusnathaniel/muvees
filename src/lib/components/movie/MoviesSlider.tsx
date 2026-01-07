@@ -37,25 +37,25 @@ const MoviesSlider = ({ sectionTitle, movies }: MoviesSliderProps) => {
 
   const slicedMovies = movies?.slice(0, 10);
 
-  const handleClickSeeMore = () => router.push(`/movies/popular?page=1`);
+  const handleClickSeeMore = () => router.push('/movies/popular?page=1');
 
   return (
     <SliderContainer
-      sectionTitle={sectionTitle}
-      onClickSeeMore={handleClickSeeMore}
       footer={movieListTypes.map((type) => (
         <MovieListTypeButton key={type} listType={type} />
       ))}
+      onClickSeeMore={handleClickSeeMore}
+      sectionTitle={sectionTitle}
     >
       {slicedMovies?.map((movie, idx) => (
         <PosterCard
-          name={movie.title}
           id={movie.id}
           imageUrl={movie.poster_path}
-          mediaType={MediaType.Movie}
+          isLastItem={idx === slicedMovies.length - 1}
           key={`${movie.title}-${movie.id}`}
           layout="flex"
-          isLastItem={idx === slicedMovies.length - 1}
+          mediaType={MediaType.Movie}
+          name={movie.title}
         />
       ))}
     </SliderContainer>

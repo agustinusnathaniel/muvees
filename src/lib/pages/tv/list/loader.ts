@@ -25,6 +25,6 @@ export const getStaticProps: GetStaticProps<
       // data,
       listType,
     },
-    revalidate: 86400,
+    revalidate: 86_400,
   };
 };

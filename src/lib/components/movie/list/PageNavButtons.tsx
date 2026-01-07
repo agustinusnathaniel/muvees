@@ -44,20 +44,20 @@ const PageNavButtons = ({
   };
 
   return (
-    <Skeleton marginY={4} isLoaded={!isLoading}>
+    <Skeleton isLoaded={!isLoading} marginY={4}>
       {results?.length ? (
         <Grid rowGap={4}>
           <Text
-            letterSpacing={2}
-            textTransform="uppercase"
-            textAlign="center"
-            marginY={2}
             fontSize="sm"
+            letterSpacing={2}
+            marginY={2}
+            textAlign="center"
+            textTransform="uppercase"
           >
             Page: <b>{page ?? 0}</b> / {totalPages}
           </Text>
 
-          <Grid templateColumns={['repeat(2, 1fr)']} gap={4}>
+          <Grid gap={4} templateColumns={['repeat(2, 1fr)']}>
             <Button isDisabled={page === 1} onClick={handleChangePage('prev')}>
               prev
             </Button>

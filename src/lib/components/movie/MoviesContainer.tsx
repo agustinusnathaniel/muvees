@@ -13,12 +13,12 @@ const MoviesContainer = ({ movies, isLoading }: MoviesContainerProps) => {
     <GridContainer isLoading={isLoading}>
       {movies?.map((movie) => (
         <PosterCard
-          name={movie.title}
           id={movie.id}
-          mediaType={MediaType.Movie}
           imageUrl={movie.poster_path}
           key={`${movie.title}-${movie.id}`}
           layout="grid"
+          mediaType={MediaType.Movie}
+          name={movie.title}
         />
       ))}
     </GridContainer>

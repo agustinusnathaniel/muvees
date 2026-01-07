@@ -9,7 +9,7 @@ export const getMultiSearchResult = (params: MultiSearchParams) =>
 
 export const useMultiSearchResult = (
   params: MultiSearchParams,
-  isReady = true,
+  isReady = true
 ) =>
   useTmdbSWR<MultiSearchResponse>({
     path: MULTI_SEARCH_RESOURCE_PATH,

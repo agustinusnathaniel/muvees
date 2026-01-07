@@ -20,15 +20,15 @@ const MovieDetailMeta = ({ data }: MovieDetailMetaProps) => {
         overview: data.overview,
       }}
       extras={
-        <Flex wrap="wrap" gridGap={2}>
+        <Flex gridGap={2} wrap="wrap">
           {data.genres.map((genre) => (
             <Badge
-              cursor="pointer"
-              variant={colorMode === 'light' ? 'solid' : 'outline'}
-              colorScheme="gray"
-              key={`${genre.name}-${genre.id}`}
               as={Link}
+              colorScheme="gray"
+              cursor="pointer"
               href={`/movies/genre/${genre.id}?page=1`}
+              key={`${genre.name}-${genre.id}`}
+              variant={colorMode === 'light' ? 'solid' : 'outline'}
             >
               {genre.name}
             </Badge>

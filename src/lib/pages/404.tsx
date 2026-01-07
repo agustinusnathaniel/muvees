@@ -14,10 +14,10 @@ const Page404 = () => {
 
   return (
     <>
-      <Box width={['100%', '70%', '60%', '60%']} margin="0 auto">
-        <Image src="/404 Error-pana.svg" alt="404 error" />
+      <Box margin="0 auto" width={['100%', '70%', '60%', '60%']}>
+        <Image alt="404 error" src="/404 Error-pana.svg" />
       </Box>
-      <Text textAlign="center" fontSize="xs">
+      <Text fontSize="xs" textAlign="center">
         <ChakraLink href="https://stories.freepik.com/web" isExternal>
           Illustration by Freepik Stories
         </ChakraLink>
@@ -26,12 +26,12 @@ const Page404 = () => {
       <Box marginY={4}>
         <Heading textAlign="center">Page not Found.</Heading>
 
-        <Box textAlign="center" marginTop={4}>
+        <Box marginTop={4} textAlign="center">
           <Text>It&apos;s Okay!</Text>
           <Button
             as={Link}
-            href="/"
             backgroundColor={colorMode === 'light' ? 'gray.300' : 'teal.500'}
+            href="/"
           >
             Let&apos;s Head Back
           </Button>

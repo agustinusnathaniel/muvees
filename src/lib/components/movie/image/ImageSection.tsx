@@ -13,22 +13,22 @@ type ImageSectionProps = {
 const ImageSection = ({ title, data, maxHeight }: ImageSectionProps) => {
   return (
     <Box>
-      <Heading marginX={8} fontSize="2xl">
+      <Heading fontSize="2xl" marginX={8}>
         {title}
       </Heading>
-      <Flex paddingX={[8, 6]} overflowX="scroll">
+      <Flex overflowX="scroll" paddingX={[8, 6]}>
         <Flex alignItems="center" gridGap={4} minHeight={360}>
           {data.map((image) => (
             <Link
-              key={image.file_path}
               display="contents"
               href={`${IMAGE_URL_ORIGINAL}${image.file_path}`}
               isExternal
+              key={image.file_path}
             >
               <PosterImage
-                src={image.file_path}
                 key={image.file_path}
                 maxHeight={maxHeight}
+                src={image.file_path}
               />
             </Link>
           ))}

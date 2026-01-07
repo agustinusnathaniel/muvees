@@ -48,7 +48,7 @@ const TVShowList = ({ data: fallbackData, listType }: TVShowListPageProps) => {
         <Text textTransform="capitalize">{listType.replaceAll('_', ' ')}</Text>
       </Grid>
       <PageNavButtons {...pageNavButtonProps} />
-      <TvShowListContainer shows={data?.results} isLoading={isLoading} />
+      <TvShowListContainer isLoading={isLoading} shows={data?.results} />
       <PageNavButtons {...pageNavButtonProps} />
     </Grid>
   );

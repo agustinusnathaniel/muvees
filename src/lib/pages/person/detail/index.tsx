@@ -20,19 +20,19 @@ const PersonDetailPage = () => {
   const { data } = usePersonDetail(Number(id));
 
   return (
-    <Grid marginX={8} gap={8}>
+    <Grid gap={8} marginX={8}>
       <Button onClick={router.back}>back</Button>
 
       <Skeleton isLoaded={!!data}>
         <Box
-          display={{ base: 'grid', md: 'flex' }}
           alignItems="start"
+          display={{ base: 'grid', md: 'flex' }}
           gap={{ base: 8, md: 16 }}
         >
           {data && (
             <AspectRatio
-              minWidth={{ md: 300 }}
               marginX={[8, '25%', 0]}
+              minWidth={{ md: 300 }}
               ratio={3.6 / 5}
             >
               <PosterImage
@@ -45,12 +45,12 @@ const PersonDetailPage = () => {
           <Box>
             {data && (
               <Heading
-                textAlign={['center', 'center', 'inherit']}
-                size="lg"
-                letterSpacing={2}
-                textTransform="uppercase"
                 fontWeight="extrabold"
+                letterSpacing={2}
                 marginX={[8, 8, 0]}
+                size="lg"
+                textAlign={['center', 'center', 'inherit']}
+                textTransform="uppercase"
               >
                 {data.name}
               </Heading>
@@ -59,11 +59,11 @@ const PersonDetailPage = () => {
             {data && (
               <Grid gap={4}>
                 <Box
-                  textTransform="uppercase"
-                  letterSpacing={2}
-                  marginY={2}
                   fontSize="xs"
                   fontWeight="light"
+                  letterSpacing={2}
+                  marginY={2}
+                  textTransform="uppercase"
                 >
                   {data.deathday ? (
                     <Text>

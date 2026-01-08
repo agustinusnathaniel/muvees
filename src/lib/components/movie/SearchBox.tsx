@@ -1,15 +1,13 @@
 import { Field, Input } from '@chakra-ui/react';
 import debounce from 'lodash/debounce';
-import { useRouter } from 'next/router';
+import { useRouter, useSearchParams } from 'next/navigation';
 import type { ChangeEvent } from 'react';
 import { useCallback } from 'react';
 
 const SearchBox = () => {
   const router = useRouter();
-
-  const {
-    query: { query },
-  } = router;
+  const searchParams = useSearchParams();
+  const query = searchParams.get('query');
 
   // eslint-disable-next-line react-hooks/exhaustive-deps
   const handleChangeQuery = useCallback(
@@ -27,7 +25,7 @@ const SearchBox = () => {
     <Field.Root marginY={2}>
       <Input
         borderRadius={24}
-        defaultValue={query}
+        defaultValue={query ?? undefined}
         fontSize="sm"
         onChange={handleChangeQuery}
         placeholder="Movie Title"

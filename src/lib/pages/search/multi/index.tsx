@@ -5,15 +5,15 @@ import PosterCard from 'lib/components/shared/PosterCard';
 import { BASE_URL } from 'lib/constants/baseUrl';
 import { useMultiSearchResult } from 'lib/services/tmdb/search/multi/index.client';
 import debounce from 'lodash/debounce';
-import { useRouter } from 'next/router';
+import { usePathname, useRouter, useSearchParams } from 'next/navigation';
 import { useCallback, useMemo } from 'react';
 
 const MultiSearchPage = () => {
   const router = useRouter();
-  const {
-    asPath,
-    query: { page: qPage, query: qQuery },
-  } = router;
+  const searchParams = useSearchParams();
+  const pathname = usePathname();
+  const qPage = searchParams.get('page');
+  const qQuery = searchParams.get('query');
   const page = qPage && Number(qPage) > 0 ? Number(qPage) : 1;
   const query = qQuery as string;
 
@@ -38,11 +38,11 @@ const MultiSearchPage = () => {
 
   const handleChangePage = useCallback(
     (updatedPage: number) => {
-      const queryParams = new URL(BASE_URL + asPath).searchParams;
+      const queryParams = new URL(BASE_URL + pathname).searchParams;
       queryParams.set('page', updatedPage.toString());
-      router.push(`${asPath.split('?')[0]}?${queryParams.toString()}`);
+      router.push(`${pathname}?${queryParams.toString()}`);
     },
-    [asPath, router]
+    [pathname, router]
   );
 
   const handleClickNext = useCallback(() => {

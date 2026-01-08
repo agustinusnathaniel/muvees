@@ -33,7 +33,6 @@ export const MovieListContainer = ({
   const searchParams = useSearchParams();
 
   const qPage = searchParams.get('page');
-  console.info({ qPage });
   const query = searchParams.get('query');
 
   const page = qPage ? Number(qPage) : 1;

@@ -1,6 +1,9 @@
-import { tmdbServerFetcher } from 'lib/services/tmdb/utils.server';
+import { tmdbServerFetcherCore } from 'lib/services/tmdb/utils.server';
 
 import type { MovieDetailResponse } from './types';
 
 export const getMovieDetailServer = (id: number) =>
-  tmdbServerFetcher<MovieDetailResponse>(`/movie/${id}`);
+  tmdbServerFetcherCore<MovieDetailResponse>({
+    path: `/movie/${id}`,
+    reqInit: { next: { revalidate: 604_800 } },
+  });

@@ -6,7 +6,7 @@ export const revalidate = 43_200;
 
 export default async function Page() {
   const [popularMovieData, popularTvShowData] = await Promise.all([
-    getMovieListServer('popular'),
+    getMovieListServer({ section: 'popular', revalidate: 43_200 }),
     getTVShowByListType('popular'),
   ]);
 

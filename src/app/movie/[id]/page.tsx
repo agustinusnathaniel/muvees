@@ -4,10 +4,6 @@ import { getMovieDetailServer } from 'lib/services/tmdb/movie/detail/index.serve
 import { notFound } from 'next/navigation';
 
 export const revalidate = 604_800;
-export const dynamic = 'force-static';
-export const generateStaticParams = () => {
-  return [];
-};
 
 export default async function Page({
   params,

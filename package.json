@@ -34,6 +34,7 @@
   "dependencies": {
     "@chakra-ui/react": "^3.30.0",
     "@emotion/react": "^11.14.0",
+    "better-all": "^0.0.1",
     "framer-motion": "^12.24.10",
     "ky": "^1.14.2",
     "lodash": "^4.17.21",

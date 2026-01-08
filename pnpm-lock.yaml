@@ -14,6 +14,9 @@ importers:
       '@emotion/react':
         specifier: ^11.14.0
         version: 11.14.0(@types/react@19.2.7)(react@19.2.3)
+      better-all:
+        specifier: ^0.0.1
+        version: 0.0.1
       framer-motion:
         specifier: ^12.24.10
         version: 12.24.10(@emotion/is-prop-valid@1.4.0)(react-dom@19.2.3(react@19.2.3))(react@19.2.3)
@@ -1195,6 +1198,9 @@ packages:
   baseline-browser-mapping@2.9.12:
     resolution: {integrity: sha512-Mij6Lij93pTAIsSYy5cyBQ975Qh9uLEc5rwGTpomiZeXZL9yIS6uORJakb3ScHgfs0serMMfIbXzokPMuEiRyw==}
     hasBin: true
+
+  better-all@0.0.1:
+    resolution: {integrity: sha512-c9HIuKvvo5gU1jqisZNZrbsna5mhyiQBXNTKrw6Kog4Mi2z01b/oRKo1IETzyIc4L0PJZpHI7T1ROLcGKcH/6g==}
 
   bl@4.1.0:
     resolution: {integrity: sha512-1W07cM9gS6DcLperZfFSj+bWLtaPGSOHWhPiGzXmvVJbRLdG82sH/Kn8EtW1VqWVA54AKf2h5k5BbnIbwF3h6w==}
@@ -4264,6 +4270,8 @@ snapshots:
   base64-js@1.5.1: {}
 
   baseline-browser-mapping@2.9.12: {}
+
+  better-all@0.0.1: {}
 
   bl@4.1.0:
     dependencies:

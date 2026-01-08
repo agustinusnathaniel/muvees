@@ -1,5 +1,11 @@
-import { tmdbFetcher } from 'lib/services/tmdb/utils.server';
+import { fetcher } from 'lib/utils/fetcher';
 import useSWR from 'swr';
+
+export const tmdbFetcher = <ResType>([path, params]: [
+  path: string,
+  // biome-ignore lint/suspicious/noExplicitAny: -
+  params?: any,
+]) => fetcher<ResType>(`/api/tmdb${path}`, params);
 
 export type UseTmdbSWRArgs<ResType> = {
   path: string;

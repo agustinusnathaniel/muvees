@@ -1,9 +1,9 @@
 import { Grid, Input, Skeleton, Text } from '@chakra-ui/react';
-import type { PageNavButtonProps } from 'lib/components/shared/list/PageNavButtons';
-import PageNavButtons from 'lib/components/shared/list/PageNavButtons';
+import type { PageNavButtonProps } from 'lib/components/shared/list/page-nav-buttons';
+import PageNavButtons from 'lib/components/shared/list/page-nav-buttons';
 import PosterCard from 'lib/components/shared/PosterCard';
 import { BASE_URL } from 'lib/constants/baseUrl';
-import { useMultiSearchResult } from 'lib/services/tmdb/search/multi';
+import { useMultiSearchResult } from 'lib/services/tmdb/search/multi/index.client';
 import debounce from 'lodash/debounce';
 import { useRouter } from 'next/router';
 import { useCallback, useMemo } from 'react';

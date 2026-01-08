@@ -1,4 +1,4 @@
-import MovieListContainer from '../../movie-list-container';
+import { MovieListContainer } from 'lib/components/movie/list';
 
 export default async function Page({
   params,
@@ -7,5 +7,5 @@ export default async function Page({
 }) {
   const { genre } = await params;
 
-  return <MovieListContainer listMode="discover" genre={genre} />;
+  return <MovieListContainer genre={genre} listMode="discover" />;
 }

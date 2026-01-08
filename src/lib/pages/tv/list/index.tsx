@@ -1,15 +1,18 @@
 'use client';
 
 import { Grid, Heading, Text } from '@chakra-ui/react';
-import type { PageNavButtonProps } from 'lib/components/shared/list/PageNavButtons';
-import PageNavButtons from 'lib/components/shared/list/PageNavButtons';
+import type { PageNavButtonProps } from 'lib/components/shared/list/page-nav-buttons';
+import PageNavButtons from 'lib/components/shared/list/page-nav-buttons';
 import TvShowListContainer from 'lib/components/tv/TvShowListContainer';
 import { useTVShowByList } from 'lib/services/tmdb/tv/list/index.client';
+import type { TVShowListType } from 'lib/services/tmdb/tv/list/types';
 import { useRouter, useSearchParams } from 'next/navigation';
 
-import type { TVShowListPageProps } from './types';
+type TVShowListPageProps = {
+  listType: TVShowListType;
+};
 
-const TVShowList = ({ data: fallbackData, listType }: TVShowListPageProps) => {
+const TVShowList = ({ listType }: TVShowListPageProps) => {
   const { push } = useRouter();
   const searchParams = useSearchParams();
   const qPage = searchParams.get('page');
@@ -18,7 +21,6 @@ const TVShowList = ({ data: fallbackData, listType }: TVShowListPageProps) => {
   const { data, isLoading } = useTVShowByList({
     listType,
     params: { page },
-    fallbackData,
   });
 
   const handleChangePage = (updatedPage: number) => {

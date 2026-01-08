@@ -1,25 +1,30 @@
+'use client';
+
 import { Button, Grid } from '@chakra-ui/react';
 import MovieDetailAdditionalInfo from 'lib/components/movie/detail/AdditionalInfo';
 import CastsWrapper from 'lib/components/movie/detail/CastsWrapper';
 import MovieDetailMeta from 'lib/components/movie/detail/Meta';
-import { handleRouteBack } from 'lib/utils/handleRouteBack';
+import type { MovieCreditsResponse } from 'lib/services/tmdb/movie/credits/types';
+import type { MovieDetailResponse } from 'lib/services/tmdb/movie/detail/types';
 import Head from 'next/head';
-import { useRouter } from 'next/router';
+import { useParams, useRouter } from 'next/navigation';
 import { generateNextSeo } from 'next-seo/pages';
 import { useEffect, useState } from 'react';
 
-import type { MovieDetailPageProps } from './types';
+export type MovieDetailPageProps = {
+  detailData: MovieDetailResponse;
+  creditsData: MovieCreditsResponse;
+};
 
-const MovieDetailPage = ({
+export const MovieDetailPage = ({
   detailData: data,
   creditsData: credits,
 }: MovieDetailPageProps) => {
   const router = useRouter();
+  const params = useParams();
   const [movieId, setMovieId] = useState<number>();
 
-  const {
-    query: { id },
-  } = router;
+  const { id } = params;
 
   useEffect(() => {
     if (id) {
@@ -37,7 +42,7 @@ const MovieDetailPage = ({
       </Head>
 
       <Grid flexBasis={['100%']} rowGap={8}>
-        <Button onClick={handleRouteBack(router)} width={['full', 'full', 100]}>
+        <Button onClick={() => router.back()} width={['full', 'full', 100]}>
           back
         </Button>
 
@@ -57,5 +62,3 @@ const MovieDetailPage = ({
     </Grid>
   );
 };
-
-export default MovieDetailPage;

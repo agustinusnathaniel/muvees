@@ -11,11 +11,11 @@ import { BionifiedParagraph } from 'lib/components/BionifiedParagraph';
 import PosterImage from 'lib/components/shared/PosterImage';
 import { usePersonDetail } from 'lib/services/tmdb/person/detail';
 import { countAge } from 'lib/utils/countAge';
-import { useRouter } from 'next/router';
+import { useParams, useRouter } from 'next/navigation';
 
 const PersonDetailPage = () => {
   const router = useRouter();
-  const { id } = router.query;
+  const { id } = useParams();
 
   const { data } = usePersonDetail(Number(id));
 

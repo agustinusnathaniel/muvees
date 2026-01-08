@@ -1,4 +1,4 @@
-import MovieListContainer from '../movie-list-container';
+import { MovieListContainer } from 'lib/components/movie/list';
 
 export default async function Page({
   searchParams,

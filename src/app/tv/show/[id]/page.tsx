@@ -1,10 +1,10 @@
 import TvShowDetailPage from 'lib/pages/tv/detail';
+import type { TvShowDetailPageProps } from 'lib/pages/tv/detail/types';
 import { getTvShowDetail } from 'lib/services/tmdb/tv/detail';
 import { notFound } from 'next/navigation';
-import type { TvShowDetailPageProps } from 'lib/pages/tv/detail/types';
 
 export const dynamic = 'force-static';
-export const revalidate = 604800;
+export const revalidate = 604_800;
 
 export default async function Page({
   params,

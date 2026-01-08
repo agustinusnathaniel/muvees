@@ -8,7 +8,9 @@ export async function GET(
   { params }: { params: Promise<{ path?: Array<string> }> }
 ) {
   const { path } = (await params) || [];
-  const queryParams = Object.fromEntries(request.nextUrl.searchParams.entries());
+  const queryParams = Object.fromEntries(
+    request.nextUrl.searchParams.entries()
+  );
 
   const requestPath = path && path.length > 0 ? `/${path.join('/')}` : '/';
 

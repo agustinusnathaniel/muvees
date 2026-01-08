@@ -1,11 +1,15 @@
+'use client';
+
 import { Button, Grid, Heading } from '@chakra-ui/react';
 import ImageSection from 'lib/components/movie/image/ImageSection';
-import { useRouter } from 'next/router';
+import { useMovieImages } from 'lib/services/tmdb/movie/images/index.client';
+import { useParams, useRouter } from 'next/navigation';
 
-import type { MovieImagesPageProps } from './types';
-
-const MovieImagesPage = ({ data }: MovieImagesPageProps) => {
+export const MovieImagesPage = () => {
   const router = useRouter();
+  const { id } = useParams();
+
+  const { data } = useMovieImages(Number(id));
 
   return (
     <Grid gridGap={[8, 16]} templateColumns="minmax(0,1fr)">
@@ -25,5 +29,3 @@ const MovieImagesPage = ({ data }: MovieImagesPageProps) => {
     </Grid>
   );
 };
-
-export default MovieImagesPage;

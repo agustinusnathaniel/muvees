@@ -6,7 +6,7 @@
     ["clsx\\(([^)]*)\\)", "(?:'|\"|`)([^']*)(?:'|\"|`)"]
   ],
   "workbench.editor.customLabels.patterns": {
-    "**/app/**/{page,layout,index}.{ts,tsx}": "(${dirname})/${filename}.${extname}",
+    "**/app/**/{page,layout,index,not-found}.{ts,tsx}": "(${dirname})/${filename}.${extname}",
     "**/index.{ts,tsx}": "${dirname}/index.${extname}"
   },
   "[javascript]": {

@@ -1,30 +1,29 @@
 'use client';
 
-import { Button, Grid, Skeleton, Text } from '@chakra-ui/react';
 import type { MovieListModeKey } from 'lib/components/movie/list/types';
+import PageNavButtons, {
+  type PageNavButtonProps,
+} from 'lib/components/shared/list/page-nav-buttons';
 import type { ListType } from 'lib/services/tmdb/movie/list/types';
-import type { TmdbAPIListResponse } from 'lib/services/tmdb/types';
 import { useRouter, useSearchParams } from 'next/navigation';
 
-export type PageNavButtonProps = {
-  isLoading: boolean;
-  page?: number;
-  totalPages: number;
-  results?: TmdbAPIListResponse<unknown>['results'];
+export type MovieListPageNavButtonProps = Omit<
+  PageNavButtonProps,
+  'onClickNext' | 'onClickPrev'
+> & {
   listMode: MovieListModeKey;
   section?: ListType;
   genre?: string;
 };
 
-const PageNavButtons = ({
+export const MovieListPageNavButtons = ({
   isLoading,
-  results,
   page = 0,
   totalPages,
   listMode,
   section,
   genre,
-}: PageNavButtonProps) => {
+}: MovieListPageNavButtonProps) => {
   const router = useRouter();
   const searchParams = useSearchParams();
 
@@ -51,34 +50,12 @@ const PageNavButtons = ({
   };
 
   return (
-    <Skeleton loading={!!isLoading} marginY={4}>
-      {results?.length ? (
-        <Grid rowGap={4}>
-          <Text
-            fontSize="sm"
-            letterSpacing={2}
-            marginY={2}
-            textAlign="center"
-            textTransform="uppercase"
-          >
-            Page: <b>{page ?? 0}</b> / {totalPages}
-          </Text>
-
-          <Grid gap={4} templateColumns={['repeat(2, 1fr)']}>
-            <Button disabled={page === 1} onClick={handleChangePage('prev')}>
-              prev
-            </Button>
-            <Button
-              disabled={page === totalPages}
-              onClick={handleChangePage('next')}
-            >
-              next
-            </Button>
-          </Grid>
-        </Grid>
-      ) : null}
-    </Skeleton>
+    <PageNavButtons
+      isLoading={isLoading}
+      onClickNext={handleChangePage('next')}
+      onClickPrev={handleChangePage('prev')}
+      page={page}
+      totalPages={totalPages}
+    />
   );
 };
-
-export default PageNavButtons;

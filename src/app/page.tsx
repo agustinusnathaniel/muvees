@@ -1,7 +1,6 @@
+import { Home } from 'lib/pages/home';
 import { getMovieListServer } from 'lib/services/tmdb/movie/list/index.server';
 import { getTVShowByListType } from 'lib/services/tmdb/tv/list/index.server';
-
-import Home from './home-page';
 
 export const revalidate = 43_200;
 
@@ -10,8 +9,6 @@ export default async function Page() {
     getMovieListServer('popular'),
     getTVShowByListType('popular'),
   ]);
-
-  console.info({ popularMovieData });
 
   return (
     <Home

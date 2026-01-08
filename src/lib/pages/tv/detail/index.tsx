@@ -1,10 +1,15 @@
+import { Badge, Button, Flex, Grid } from '@chakra-ui/react';
 import DetailMeta from 'lib/components/shared/DetailMeta';
+import { useColorMode } from 'lib/components/ui/color-mode';
+import type { TvShowDetail } from 'lib/services/tmdb/tv/detail/types';
 import { handleRouteBack } from 'lib/utils/handleRouteBack';
 import Head from 'next/head';
-import { useRouter } from 'next/router';
+import { useRouter } from 'next/navigation';
 import { generateNextSeo } from 'next-seo/pages';
 
-import type { TvShowDetailPageProps } from './types';
+export type TvShowDetailPageProps = {
+  data: TvShowDetail;
+};
 
 const TvShowDetailPage = ({ data }: TvShowDetailPageProps) => {
   const router = useRouter();

@@ -1,5 +1,5 @@
+import { MovieListContainer } from 'lib/components/movie/list';
 import type { ListType } from 'lib/services/tmdb/movie/list/types';
-import MovieListContainer from '../movie-list-container';
 
 export default async function Page({
   params,

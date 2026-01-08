@@ -1,4 +1,11 @@
+'use client';
+
 import { Box, Button, Heading } from '@chakra-ui/react';
+import {
+  type MovieListPageNavButtonProps,
+  MovieListPageNavButtons,
+} from 'lib/components/movie/list/components';
+import type { MovieListModeKey } from 'lib/components/movie/list/types';
 import MoviesContainer from 'lib/components/movie/MoviesContainer';
 import SearchBox from 'lib/components/movie/SearchBox';
 import { useMovieList } from 'lib/services/tmdb/movie/list/index.client';
@@ -7,23 +14,28 @@ import type {
   MovieListParams,
 } from 'lib/services/tmdb/movie/list/types';
 import Head from 'next/head';
-import { useRouter } from 'next/router';
+import { useRouter, useSearchParams } from 'next/navigation';
 import { generateNextSeo } from 'next-seo/pages';
 import { useEffect, useState } from 'react';
 
-import type { PageNavButtonProps } from './PageNavButtons';
-import PageNavButtons from './PageNavButtons';
-import type { MovieListModeKey } from './types';
-
 type MovieListContainerProps = {
   listMode: MovieListModeKey;
+  section?: ListType;
+  genre?: string;
 };
 
-const MovieListContainer = ({ listMode }: MovieListContainerProps) => {
+export const MovieListContainer = ({
+  listMode,
+  section,
+  genre,
+}: MovieListContainerProps) => {
   const router = useRouter();
-  const {
-    query: { section, page: qPage, query, genre },
-  } = router;
+  const searchParams = useSearchParams();
+
+  const qPage = searchParams.get('page');
+  console.info({ qPage });
+  const query = searchParams.get('query');
+
   const page = qPage ? Number(qPage) : 1;
 
   const [totalPages, setTotalPages] = useState<number>(0);
@@ -58,7 +70,7 @@ const MovieListContainer = ({ listMode }: MovieListContainerProps) => {
   }, [page, query, genre, listMode]);
 
   const { data, isLoading } = useMovieList(
-    listMode === 'section' ? (section as ListType) : undefined,
+    listMode === 'section' ? section : undefined,
     queries,
     undefined,
     listMode === 'search' ? shouldFetch : undefined
@@ -93,12 +105,13 @@ const MovieListContainer = ({ listMode }: MovieListContainerProps) => {
     }
   }, [listMode, query, genre]);
 
-  const pageNavButtonProps: PageNavButtonProps = {
+  const pageNavButtonProps: MovieListPageNavButtonProps = {
     isLoading,
     page,
     totalPages,
-    results: data?.results,
     listMode,
+    section,
+    genre,
   };
 
   const generatePageHeadTitle = () => {
@@ -119,14 +132,14 @@ const MovieListContainer = ({ listMode }: MovieListContainerProps) => {
 
     return (
       <>
-        {listMode !== 'search' && (
+        {listMode !== 'search' && section && (
           <Heading textTransform="capitalize">
-            {section && (section as string).replace('_', ' ')}
+            {section.replace('_', ' ')}
           </Heading>
         )}
-        <PageNavButtons {...pageNavButtonProps} />
+        <MovieListPageNavButtons {...pageNavButtonProps} />
         <MoviesContainer isLoading={isLoading} movies={data?.results} />
-        <PageNavButtons {...pageNavButtonProps} />
+        <MovieListPageNavButtons {...pageNavButtonProps} />
       </>
     );
   };
@@ -138,11 +151,9 @@ const MovieListContainer = ({ listMode }: MovieListContainerProps) => {
         back
       </Button>
 
-      {listMode === 'search' && <SearchBox />}
+      {listMode === 'search' && query && <SearchBox />}
 
       <Box marginY={8}>{renderMovieList()}</Box>
     </Box>
   );
 };
-
-export default MovieListContainer;

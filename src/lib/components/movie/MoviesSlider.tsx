@@ -1,3 +1,5 @@
+'use client';
+
 import { Button } from '@chakra-ui/react';
 import PosterCard from 'lib/components/shared/PosterCard';
 import SliderContainer from 'lib/components/shared/SliderContainer';

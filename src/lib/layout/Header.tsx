@@ -22,12 +22,17 @@ const Header = () => {
         <Link href="/">muvees</Link>
       </Heading>
 
-      <Grid gap={1} marginLeft="auto" templateColumns="repeat(3, 1fr)">
+      <Grid
+        alignItems="center"
+        gap={1}
+        marginLeft="auto"
+        templateColumns="repeat(3, 1fr)"
+      >
         <IconButton
           aria-label="search"
           asChild
-          background="none"
           onClick={handleClickSearch}
+          variant="ghost"
         >
           <Link href="/search">
             <GoSearch />

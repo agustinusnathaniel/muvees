@@ -1,1 +1,1 @@
-export * as MultiSearchPage from 'lib/pages/search/multi';
+export { MultiSearchPage as default } from 'lib/pages/search/multi';

@@ -37,18 +37,18 @@ const PosterCard = ({
   };
 
   return (
-    <Link href={`${pathMap[mediaType]}/${id}`} passHref>
-      <MotionBox
-        as="a"
-        onClick={handleClick}
-        paddingRight={isLastItem ? [8, 6] : undefined}
-        position="relative"
-        role="group"
-        textAlign="center"
-        whileHover={{ scale: 1.05 }}
-        {...(layout === 'flex' && { flex: '0 0 auto' })}
-      >
-        {layout === 'grid' ? (
+    <MotionBox
+      // https://panda-css.com/docs/docs/concepts/conditional-styles#group-selectors
+      className="group"
+      onClick={handleClick}
+      paddingRight={isLastItem ? [8, 6] : undefined}
+      position="relative"
+      textAlign="center"
+      whileHover={{ scale: 1.05 }}
+      {...(layout === 'flex' && { flex: '0 0 auto' })}
+    >
+      {layout === 'grid' ? (
+        <Link href={`${pathMap[mediaType]}/${id}`}>
           <AspectRatio
             _groupHover={{ backgroundColor: 'black' }}
             borderRadius={24}
@@ -56,18 +56,20 @@ const PosterCard = ({
           >
             <PosterImage layout={layout} src={imageUrl} />
           </AspectRatio>
-        ) : (
-          <Box
-            _groupHover={{ backgroundColor: 'black' }}
-            as="button"
-            borderRadius={24}
-          >
+        </Link>
+      ) : (
+        <Box
+          _groupHover={{ backgroundColor: 'black' }}
+          asChild
+          borderRadius={24}
+        >
+          <Link href={`${pathMap[mediaType]}/${id}`}>
             <PosterImage layout={layout} src={imageUrl} />
-          </Box>
-        )}
-        <PosterLabel label={name ?? ''} />
-      </MotionBox>
-    </Link>
+          </Link>
+        </Box>
+      )}
+      <PosterLabel label={name ?? ''} />
+    </MotionBox>
   );
 };
 

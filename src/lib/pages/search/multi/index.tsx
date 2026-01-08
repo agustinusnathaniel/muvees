@@ -1,3 +1,5 @@
+'use client';
+
 import { Grid, Input, Skeleton, Text } from '@chakra-ui/react';
 import type { PageNavButtonProps } from 'lib/components/shared/list/page-nav-buttons';
 import PageNavButtons from 'lib/components/shared/list/page-nav-buttons';
@@ -8,7 +10,7 @@ import debounce from 'lodash/debounce';
 import { usePathname, useRouter, useSearchParams } from 'next/navigation';
 import { useCallback, useMemo } from 'react';
 
-const MultiSearchPage = () => {
+export const MultiSearchPage = () => {
   const router = useRouter();
   const searchParams = useSearchParams();
   const pathname = usePathname();
@@ -77,7 +79,7 @@ const MultiSearchPage = () => {
     return (
       <>
         <PageNavButtons {...pageNavButtonProps} />
-        <Skeleton loading={!isLoading} marginY={8}>
+        <Skeleton loading={!!isLoading} marginY={8}>
           <Grid
             columnGap={8}
             rowGap={12}
@@ -124,5 +126,3 @@ const MultiSearchPage = () => {
     </Grid>
   );
 };
-
-export default MultiSearchPage;

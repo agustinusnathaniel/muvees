@@ -48,9 +48,9 @@ const AppMenu = () => {
     <>
       <IconButton
         aria-label="app-menu"
-        background="none"
         marginLeft={2}
         onClick={onOpen}
+        variant="ghost"
       >
         <BiMenu />
       </IconButton>

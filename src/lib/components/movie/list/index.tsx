@@ -132,7 +132,12 @@ export const MovieListContainer = ({
     return (
       <>
         {listMode !== 'search' && section && (
-          <Heading textTransform="capitalize">
+          <Heading
+            as="h2"
+            fontWeight="bold"
+            size="4xl"
+            textTransform="capitalize"
+          >
             {section.replace('_', ' ')}
           </Heading>
         )}

@@ -1,12 +1,11 @@
-import { Box } from '@chakra-ui/react';
-import Footer from 'lib/layout/Footer';
-import Header from 'lib/layout/Header';
-import Meta from 'lib/layout/Meta';
 import type { Metadata, Viewport } from 'next';
 import { Outfit as FontBody } from 'next/font/google';
+import Script from 'next/script';
 
 import 'lib/styles/globals.css';
 import { Provider } from 'lib/components/ui/provider';
+import { UMAMI_SRC, UMAMI_WEBSITE_ID } from 'lib/constants/umami';
+import Layout from 'lib/layout';
 
 const fontBody = FontBody({
   subsets: ['latin'],
@@ -63,26 +62,18 @@ export default function RootLayout({
   return (
     <html className={fontBody.className} lang="en" suppressHydrationWarning>
       <head>
-        <script
+        {/* umami self-hosted analytics */}
+        <Script
           async
           data-domains="muvees.sznm.dev"
-          data-website-id="0dfc9c1d-8a32-44d0-a5d8-1b4e0b1b3e91"
+          data-website-id={UMAMI_WEBSITE_ID}
           defer
-          src="https://umami.sznm.dev/script.js"
+          src={UMAMI_SRC}
         />
       </head>
       <body>
         <Provider>
-          <Box minHeight="100vh" transition="0.5s ease-out">
-            <Meta />
-            <Box margin="0 auto" maxWidth={1000}>
-              <Header />
-              <Box as="main" marginY={22}>
-                {children}
-              </Box>
-              <Footer />
-            </Box>
-          </Box>
+          <Layout>{children}</Layout>
         </Provider>
       </body>
     </html>

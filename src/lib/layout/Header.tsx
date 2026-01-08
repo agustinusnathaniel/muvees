@@ -2,7 +2,7 @@
 
 import { Flex, Grid, Heading, IconButton } from '@chakra-ui/react';
 import { ColorModeButton } from 'lib/components/ui/color-mode';
-import { trackEvent } from 'lib/utils/trackEvent';
+import { trackEvent } from 'lib/utils/track-event';
 import Link from 'next/link';
 import { GoSearch } from 'react-icons/go';
 

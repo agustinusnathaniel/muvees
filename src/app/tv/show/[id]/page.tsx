@@ -1,9 +1,9 @@
-import TvShowDetailPage from 'lib/pages/tv/detail';
-import type { TvShowDetailPageProps } from 'lib/pages/tv/detail/types';
-import { getTvShowDetail } from 'lib/services/tmdb/tv/detail';
+import TvShowDetailPage, {
+  type TvShowDetailPageProps,
+} from 'lib/pages/tv/detail';
+import { getTvShowDetail } from 'lib/services/tmdb/tv/detail/index.server';
 import { notFound } from 'next/navigation';
 
-export const dynamic = 'force-static';
 export const revalidate = 604_800;
 
 export default async function Page({

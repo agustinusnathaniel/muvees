@@ -2,7 +2,7 @@ import { Badge, Button, Flex, Grid } from '@chakra-ui/react';
 import DetailMeta from 'lib/components/shared/DetailMeta';
 import { useColorMode } from 'lib/components/ui/color-mode';
 import type { TvShowDetail } from 'lib/services/tmdb/tv/detail/types';
-import { handleRouteBack } from 'lib/utils/handleRouteBack';
+import { handleRouteBack } from 'lib/utils/handle-route-back';
 import Head from 'next/head';
 import { useRouter } from 'next/navigation';
 import { generateNextSeo } from 'next-seo/pages';

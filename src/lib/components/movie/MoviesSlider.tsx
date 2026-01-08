@@ -15,8 +15,10 @@ type MovieListTypeButtonProps = {
 
 const MovieListTypeButton = ({ listType }: MovieListTypeButtonProps) => {
   return (
-    <Button as={Link} href={`/movies/${listType}?page=1`}>
-      {listType.replaceAll('_', ' ')}
+    <Button asChild>
+      <Link href={`/movies/${listType}?page=1`}>
+        {listType.replaceAll('_', ' ')}
+      </Link>
     </Button>
   );
 };

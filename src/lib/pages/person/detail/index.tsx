@@ -9,8 +9,8 @@ import {
 } from '@chakra-ui/react';
 import { BionifiedParagraph } from 'lib/components/BionifiedParagraph';
 import PosterImage from 'lib/components/shared/PosterImage';
-import { usePersonDetail } from 'lib/services/tmdb/person/detail';
-import { countAge } from 'lib/utils/countAge';
+import { usePersonDetail } from 'lib/services/tmdb/person/detail/index.client';
+import { countAge } from 'lib/utils/count-age';
 import { useParams, useRouter } from 'next/navigation';
 
 const PersonDetailPage = () => {

@@ -3,7 +3,7 @@ import MotionBox from 'lib/components/MotionBox';
 import PosterImage from 'lib/components/shared/PosterImage';
 import PosterLabel from 'lib/components/shared/PosterLabel';
 import type { MediaType } from 'lib/services/tmdb/search/multi/types';
-import { trackEvent } from 'lib/utils/trackEvent';
+import { trackEvent } from 'lib/utils/track-event';
 import Link from 'next/link';
 
 const pathMap: Record<MediaType, string> = {

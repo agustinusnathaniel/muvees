@@ -7,7 +7,7 @@ import {
   Skeleton,
   Text,
 } from '@chakra-ui/react';
-import { convertToPrice } from 'lib/utils/convertToPrice';
+import { convertToPrice } from 'lib/utils/convert-to-price';
 import Link from 'next/link';
 import { BiLinkExternal } from 'react-icons/bi';
 import { FaImdb } from 'react-icons/fa';

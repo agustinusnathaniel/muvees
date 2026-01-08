@@ -19,6 +19,7 @@ type PosterCardProps = {
   mediaType: MediaType;
   layout: 'flex' | 'grid';
   isLastItem?: boolean;
+  prefetch?: boolean;
 };
 
 const PosterCard = ({
@@ -28,6 +29,7 @@ const PosterCard = ({
   mediaType,
   layout,
   isLastItem,
+  prefetch,
 }: PosterCardProps) => {
   const handleClick = () => {
     trackEvent({
@@ -48,7 +50,7 @@ const PosterCard = ({
       {...(layout === 'flex' && { flex: '0 0 auto' })}
     >
       {layout === 'grid' ? (
-        <Link href={`${pathMap[mediaType]}/${id}`}>
+        <Link href={`${pathMap[mediaType]}/${id}`} prefetch={prefetch}>
           <AspectRatio
             _groupHover={{ backgroundColor: 'black' }}
             borderRadius={24}
@@ -63,7 +65,7 @@ const PosterCard = ({
           asChild
           borderRadius={24}
         >
-          <Link href={`${pathMap[mediaType]}/${id}`}>
+          <Link href={`${pathMap[mediaType]}/${id}`} prefetch={prefetch}>
             <PosterImage layout={layout} src={imageUrl} />
           </Link>
         </Box>

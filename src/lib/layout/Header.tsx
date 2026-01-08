@@ -38,7 +38,7 @@ const Header = () => {
             <GoSearch />
           </Link>
         </IconButton>
-        <ColorModeButton />
+        <ColorModeButton suppressHydrationWarning />
         <AppMenu />
       </Grid>
     </Flex>

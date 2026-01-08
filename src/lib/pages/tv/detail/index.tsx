@@ -1,3 +1,5 @@
+'use client';
+
 import { Badge, Button, Flex, Grid } from '@chakra-ui/react';
 import DetailMeta from 'lib/components/shared/DetailMeta';
 import { useColorMode } from 'lib/components/ui/color-mode';

@@ -56,7 +56,7 @@ const MovieDetailAdditionalInfo = ({
             )}
 
             <Button asChild size="sm">
-              <Link href={`/movie/${id}/images`}>
+              <Link href={`/movie/${id}/images`} prefetch={false}>
                 <GrGallery />
                 gallery
               </Link>

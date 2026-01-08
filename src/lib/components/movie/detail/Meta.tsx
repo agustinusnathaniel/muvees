@@ -30,7 +30,7 @@ const MovieDetailMeta = ({ data }: MovieDetailMetaProps) => {
               key={`${genre.name}-${genre.id}`}
               variant={colorMode === 'light' ? 'solid' : 'outline'}
             >
-              <Link href={`/movies/genre/${genre.id}?page=1`}>
+              <Link href={`/movies/genre/${genre.id}?page=1`} prefetch={false}>
                 {genre.name}
               </Link>
             </Badge>

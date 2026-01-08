@@ -47,7 +47,7 @@ const CastsWrapper = ({ isLoadingCredits, credits }: CastsWrapperProps) => {
             gridColumnGap={2}
             key={`${movieCast.name}-${movieCast.id}`}
           >
-            <Link href={`/person/${movieCast.id}`}>
+            <Link href={`/person/${movieCast.id}`} prefetch={false}>
               <Avatar.Root size="lg">
                 <Avatar.Fallback name={movieCast.name} />
                 <Avatar.Image src={`${IMAGE_URL}${movieCast.profile_path}`} />

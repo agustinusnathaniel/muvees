@@ -26,12 +26,18 @@ const MovieDetailAdditionalInfo = ({
 }: MovieDetailAdditionalInfoProps) => {
   return (
     <Grid gap={8}>
-      <Skeleton isLoaded={!isLoading}>
+      <Skeleton loading={!!isLoading}>
         {data && (
           <Flex gridColumnGap={2}>
             {data.homepage && (
-              <ChakraLink _hover={undefined} href={data.homepage} isExternal>
-                <Button leftIcon={<BiLinkExternal />} size="sm">
+              <ChakraLink
+                _hover={undefined}
+                href={data.homepage}
+                rel="noopener noreferrer"
+                target="_blank"
+              >
+                <Button size="sm">
+                  <BiLinkExternal />
                   website
                 </Button>
               </ChakraLink>
@@ -39,27 +45,27 @@ const MovieDetailAdditionalInfo = ({
             {data.imdb_id && (
               <ChakraLink
                 href={`https://www.imdb.com/title/${data.imdb_id}`}
-                isExternal
+                rel="noopener noreferrer"
+                target="_blank"
               >
-                <Button leftIcon={<FaImdb />} size="sm">
+                <Button size="sm">
+                  <FaImdb />
                   IMDB
                 </Button>
               </ChakraLink>
             )}
 
-            <Button
-              as={Link}
-              href={`/movie/${id}/images`}
-              leftIcon={<GrGallery />}
-              size="sm"
-            >
-              gallery
+            <Button asChild size="sm">
+              <Link href={`/movie/${id}/images`}>
+                <GrGallery />
+                gallery
+              </Link>
             </Button>
           </Flex>
         )}
       </Skeleton>
 
-      <Skeleton display="grid" gap={4} isLoaded={!isLoading}>
+      <Skeleton display="grid" gap={4} loading={!!isLoading}>
         <Heading fontSize="lg">Achievements</Heading>
 
         <Grid

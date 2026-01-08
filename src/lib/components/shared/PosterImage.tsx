@@ -1,5 +1,6 @@
 import type { ImageProps } from '@chakra-ui/react';
-import { Image, useColorMode } from '@chakra-ui/react';
+import { Image } from '@chakra-ui/react';
+import { useColorMode } from 'lib/components/ui/color-mode';
 
 export const IMAGE_URL = 'https://image.tmdb.org/t/p/w500';
 export const IMAGE_URL_ORIGINAL = 'https://image.tmdb.org/t/p/original';

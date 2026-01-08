@@ -1,5 +1,6 @@
-import { Badge, Flex, useColorMode } from '@chakra-ui/react';
+import { Badge, Flex } from '@chakra-ui/react';
 import DetailMeta from 'lib/components/shared/DetailMeta';
+import { useColorMode } from 'lib/components/ui/color-mode';
 import Link from 'next/link';
 
 import type { MovieDetailSectionProps } from './types';
@@ -23,14 +24,15 @@ const MovieDetailMeta = ({ data }: MovieDetailMetaProps) => {
         <Flex gridGap={2} wrap="wrap">
           {data.genres.map((genre) => (
             <Badge
-              as={Link}
+              asChild
               colorScheme="gray"
               cursor="pointer"
-              href={`/movies/genre/${genre.id}?page=1`}
               key={`${genre.name}-${genre.id}`}
               variant={colorMode === 'light' ? 'solid' : 'outline'}
             >
-              {genre.name}
+              <Link href={`/movies/genre/${genre.id}?page=1`}>
+                {genre.name}
+              </Link>
             </Badge>
           ))}
         </Flex>

@@ -1,4 +1,4 @@
-import { FormControl, Input } from '@chakra-ui/react';
+import { Field, Input } from '@chakra-ui/react';
 import debounce from 'lodash/debounce';
 import { useRouter } from 'next/router';
 import type { ChangeEvent } from 'react';
@@ -24,7 +24,7 @@ const SearchBox = () => {
   );
 
   return (
-    <FormControl marginY={2}>
+    <Field.Root marginY={2}>
       <Input
         borderRadius={24}
         defaultValue={query}
@@ -33,7 +33,7 @@ const SearchBox = () => {
         placeholder="Movie Title"
         type="text"
       />
-    </FormControl>
+    </Field.Root>
   );
 };
 

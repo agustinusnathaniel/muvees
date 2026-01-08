@@ -77,7 +77,7 @@ const MultiSearchPage = () => {
     return (
       <>
         <PageNavButtons {...pageNavButtonProps} />
-        <Skeleton isLoaded={!isLoading} marginY={8}>
+        <Skeleton loading={!isLoading} marginY={8}>
           <Grid
             columnGap={8}
             rowGap={12}

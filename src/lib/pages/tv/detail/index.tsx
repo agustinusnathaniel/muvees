@@ -1,4 +1,3 @@
-import { Badge, Button, Flex, Grid, useColorMode } from '@chakra-ui/react';
 import DetailMeta from 'lib/components/shared/DetailMeta';
 import { handleRouteBack } from 'lib/utils/handleRouteBack';
 import Head from 'next/head';

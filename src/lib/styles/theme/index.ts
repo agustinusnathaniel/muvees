@@ -1,22 +1,14 @@
-import { extendTheme } from '@chakra-ui/react';
+import { createSystem, defaultConfig, defineTokens } from '@chakra-ui/react';
 
-import { colors } from './colors';
-import { config } from './config';
-
-const customTheme = extendTheme({
+const tokens = defineTokens({
   fonts: {
-    body: 'Outfit, sans-serif',
-    heading: 'Outfit, sans-serif',
+    heading: { value: 'var(--font-body)' },
+    body: { value: 'var(--font-body)' },
   },
-  components: {
-    Button: {
-      baseStyle: {
-        borderRadius: 24,
-      },
-    },
-  },
-  colors,
-  config,
 });
 
-export default customTheme;
+export const customTheme = createSystem(defaultConfig, {
+  theme: {
+    tokens,
+  },
+});

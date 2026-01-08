@@ -16,7 +16,7 @@ const PageNavButtons = ({
   onClickPrev,
 }: PageNavButtonProps) => {
   return (
-    <Skeleton isLoaded={!isLoading} marginY={4}>
+    <Skeleton loading={!!isLoading} marginY={4}>
       {totalPages > 1 ? (
         <Grid rowGap={4}>
           <Text

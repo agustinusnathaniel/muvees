@@ -1,4 +1,4 @@
-import { tmdbServerFetcher, useTmdbSWR } from 'lib/services/tmdb/utils';
+import { tmdbServerFetcher, useTmdbSWR } from 'lib/services/tmdb/utils.server';
 
 import type { TvShowDetail } from './types';
 

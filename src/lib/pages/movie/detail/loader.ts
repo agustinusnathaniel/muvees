@@ -1,5 +1,5 @@
-import { getMovieCreditsServer } from 'lib/services/tmdb/movie/credits';
-import { getMovieDetailServer } from 'lib/services/tmdb/movie/detail';
+import { getMovieCreditsServer } from 'lib/services/tmdb/movie/credits/index.server';
+import { getMovieDetailServer } from 'lib/services/tmdb/movie/detail/index.server';
 import type { GetStaticProps } from 'next';
 
 import type { MovieDetailPageParams, MovieDetailPageProps } from './types';

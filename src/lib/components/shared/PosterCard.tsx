@@ -37,7 +37,7 @@ const PosterCard = ({
   };
 
   return (
-    <Link href={`${pathMap[mediaType]}/${id}`} legacyBehavior passHref>
+    <Link href={`${pathMap[mediaType]}/${id}`} passHref>
       <MotionBox
         as="a"
         onClick={handleClick}

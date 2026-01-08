@@ -1,4 +1,4 @@
-import { getMovieImagesServer } from 'lib/services/tmdb/movie/images';
+import { getMovieImagesServer } from 'lib/services/tmdb/movie/images/index.server';
 import type { GetStaticProps } from 'next';
 
 import type { MovieImagesPageParams, MovieImagesPageProps } from './types';

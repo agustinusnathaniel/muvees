@@ -6,10 +6,10 @@ import {
   Grid,
   Heading,
   Text,
-  useColorMode,
 } from '@chakra-ui/react';
 import { BionifiedParagraph } from 'lib/components/BionifiedParagraph';
 import PosterImage from 'lib/components/shared/PosterImage';
+import { useColorMode } from 'lib/components/ui/color-mode';
 
 type DetailData = {
   name: string;

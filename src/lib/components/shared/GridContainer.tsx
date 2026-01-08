@@ -7,7 +7,7 @@ type GridContainerProps = {
 
 const GridContainer = ({ isLoading, children }: GridContainerProps) => {
   return (
-    <Skeleton isLoaded={!isLoading} marginY={8} minHeight="60vh">
+    <Skeleton loading={!!isLoading} marginY={8} minHeight="60vh">
       <Grid
         columnGap={8}
         rowGap={12}

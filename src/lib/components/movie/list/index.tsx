@@ -1,7 +1,7 @@
 import { Box, Button, Heading } from '@chakra-ui/react';
 import MoviesContainer from 'lib/components/movie/MoviesContainer';
 import SearchBox from 'lib/components/movie/SearchBox';
-import { useMovieList } from 'lib/services/tmdb/movie/list';
+import { useMovieList } from 'lib/services/tmdb/movie/list/index.client';
 import type {
   ListType,
   MovieListParams,

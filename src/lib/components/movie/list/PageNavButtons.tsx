@@ -44,7 +44,7 @@ const PageNavButtons = ({
   };
 
   return (
-    <Skeleton isLoaded={!isLoading} marginY={4}>
+    <Skeleton loading={!isLoading} marginY={4}>
       {results?.length ? (
         <Grid rowGap={4}>
           <Text

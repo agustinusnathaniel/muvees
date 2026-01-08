@@ -23,7 +23,7 @@ const PersonDetailPage = () => {
     <Grid gap={8} marginX={8}>
       <Button onClick={router.back}>back</Button>
 
-      <Skeleton isLoaded={!!data}>
+      <Skeleton loading={!!data}>
         <Box
           alignItems="start"
           display={{ base: 'grid', md: 'flex' }}

@@ -1,18 +1,13 @@
+'use client';
+
 import {
   Avatar,
   Button,
+  Dialog,
+  Field,
   Flex,
-  FormControl,
   Grid,
-  Heading,
   Input,
-  Modal,
-  ModalBody,
-  ModalCloseButton,
-  ModalContent,
-  ModalFooter,
-  ModalHeader,
-  ModalOverlay,
   Skeleton,
   Text,
   useDisclosure,
@@ -29,7 +24,7 @@ type CastsWrapperProps = {
 };
 
 const CastsWrapper = ({ isLoadingCredits, credits }: CastsWrapperProps) => {
-  const { isOpen, onOpen, onClose } = useDisclosure();
+  const { open, onOpen, onClose } = useDisclosure();
 
   const [keyword, setKeyword] = useState<string>('');
 
@@ -47,18 +42,18 @@ const CastsWrapper = ({ isLoadingCredits, credits }: CastsWrapperProps) => {
         .map((movieCast) => (
           <Flex
             alignItems="center"
-            as={Link}
+            asChild
             cursor="pointer"
             gridColumnGap={2}
-            href={`/person/${movieCast.id}`}
             key={`${movieCast.name}-${movieCast.id}`}
           >
-            <Avatar
-              name={movieCast.name}
-              size="lg"
-              src={`${IMAGE_URL}${movieCast.profile_path}`}
-            />
-            <Text>{movieCast.name}</Text>
+            <Link href={`/person/${movieCast.id}`}>
+              <Avatar.Root size="lg">
+                <Avatar.Fallback name={movieCast.name} />
+                <Avatar.Image src={`${IMAGE_URL}${movieCast.profile_path}`} />
+              </Avatar.Root>
+              <Text>{movieCast.name}</Text>
+            </Link>
           </Flex>
         ));
     }
@@ -67,58 +62,60 @@ const CastsWrapper = ({ isLoadingCredits, credits }: CastsWrapperProps) => {
   }, [credits, keyword]);
 
   return (
-    <Skeleton isLoaded={!isLoadingCredits}>
+    <Skeleton loading={!!isLoadingCredits}>
       {credits && (
         <Flex alignItems="center" gridGap={3} minHeight={24} overflowX="scroll">
           <Button borderRadius="50%" onClick={onOpen} padding={8}>
             all
           </Button>
           {credits.cast.slice(0, 20).map((movieCast) => (
-            <Avatar
-              as={Link}
+            <Avatar.Root
+              asChild
               cursor="pointer"
-              href={`/person/${movieCast.id}`}
               key={`${movieCast.name}-${movieCast.id}`}
-              name={movieCast.name}
               size="lg"
-              src={`${IMAGE_URL}${movieCast.profile_path}`}
-            />
+            >
+              <Link href={`/person/${movieCast.id}`}>
+                <Avatar.Fallback name={movieCast.name} />
+                <Avatar.Image src={`${IMAGE_URL}${movieCast.profile_path}`} />
+              </Link>
+            </Avatar.Root>
           ))}
           <Button borderRadius="50%" onClick={onOpen} padding={8}>
             more
           </Button>
 
-          <Modal
-            isCentered
-            isOpen={isOpen}
-            onClose={onClose}
+          <Dialog.Root
+            onOpenChange={onClose}
+            open={open}
+            placement="center"
             scrollBehavior="inside"
           >
-            <ModalOverlay />
+            <Dialog.Backdrop />
 
-            <ModalContent>
-              <ModalHeader>
-                <Heading>Casts</Heading>
-                <FormControl marginY={2}>
+            <Dialog.Content>
+              <Dialog.Header>
+                <Dialog.Title>Casts</Dialog.Title>
+                <Field.Root marginY={2}>
                   <Input
                     onChange={handleChangeKeyword}
                     placeholder="search"
                     type="text"
                     value={keyword}
                   />
-                </FormControl>
-              </ModalHeader>
-              <ModalCloseButton />
+                </Field.Root>
+              </Dialog.Header>
+              <Dialog.CloseTrigger />
 
-              <ModalBody>
+              <Dialog.Body>
                 <Grid gap={4} templateColumns={['repeat(1, 1fr)']}>
                   {casts}
                 </Grid>
-              </ModalBody>
+              </Dialog.Body>
 
-              <ModalFooter />
-            </ModalContent>
-          </Modal>
+              <Dialog.Footer />
+            </Dialog.Content>
+          </Dialog.Root>
         </Flex>
       )}
     </Skeleton>

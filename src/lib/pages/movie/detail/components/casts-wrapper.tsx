@@ -10,7 +10,6 @@ import {
   Input,
   Skeleton,
   Text,
-  useDisclosure,
 } from '@chakra-ui/react';
 import { IMAGE_URL } from 'lib/components/shared/PosterImage';
 import type { MovieCreditsResponse } from 'lib/services/tmdb/movie/credits/types';
@@ -24,7 +23,6 @@ type CastsWrapperProps = {
 };
 
 const CastsWrapper = ({ isLoadingCredits, credits }: CastsWrapperProps) => {
-  const { open, onOpen, onClose } = useDisclosure();
   const [keyword, setKeyword] = useState<string>('');
 
   const handleChangeKeyword = (event: ChangeEvent<HTMLInputElement>) =>
@@ -62,61 +60,67 @@ const CastsWrapper = ({ isLoadingCredits, credits }: CastsWrapperProps) => {
 
   return (
     <Skeleton loading={!!isLoadingCredits}>
-      {credits && (
-        <Flex alignItems="center" gridGap={3} minHeight={24} overflowX="scroll">
-          <Button borderRadius="50%" onClick={onOpen} padding={8}>
-            all
-          </Button>
-          {credits.cast.slice(0, 20).map((movieCast) => (
-            <Avatar.Root
-              asChild
-              cursor="pointer"
-              key={`${movieCast.name}-${movieCast.id}`}
-              size="lg"
-            >
-              <Link href={`/person/${movieCast.id}`}>
-                <Avatar.Fallback name={movieCast.name} />
-                <Avatar.Image src={`${IMAGE_URL}${movieCast.profile_path}`} />
-              </Link>
-            </Avatar.Root>
-          ))}
-          <Button borderRadius="50%" onClick={onOpen} padding={8}>
-            more
-          </Button>
-
-          <Dialog.Root
-            onOpenChange={onClose}
-            open={open}
-            placement="center"
-            scrollBehavior="inside"
+      <Dialog.Root placement="center" scrollBehavior="inside">
+        {credits && (
+          <Flex
+            alignItems="center"
+            gridGap={3}
+            minHeight={24}
+            overflowX="scroll"
           >
-            <Dialog.Backdrop />
+            <Dialog.Trigger asChild>
+              <Button borderRadius="50%" padding={8}>
+                all
+              </Button>
+            </Dialog.Trigger>
+            {credits.cast.slice(0, 20).map((movieCast) => (
+              <Avatar.Root
+                asChild
+                cursor="pointer"
+                key={`${movieCast.name}-${movieCast.id}`}
+                size="lg"
+              >
+                <Link href={`/person/${movieCast.id}`}>
+                  <Avatar.Fallback name={movieCast.name} />
+                  <Avatar.Image src={`${IMAGE_URL}${movieCast.profile_path}`} />
+                </Link>
+              </Avatar.Root>
+            ))}
+            <Dialog.Trigger asChild>
+              <Button borderRadius="50%" padding={8}>
+                more
+              </Button>
+            </Dialog.Trigger>
+          </Flex>
+        )}
 
-            <Dialog.Content>
-              <Dialog.Header>
-                <Dialog.Title>Casts</Dialog.Title>
-                <Field.Root marginY={2}>
-                  <Input
-                    onChange={handleChangeKeyword}
-                    placeholder="search"
-                    type="text"
-                    value={keyword}
-                  />
-                </Field.Root>
-              </Dialog.Header>
-              <Dialog.CloseTrigger />
+        <Dialog.Backdrop />
 
-              <Dialog.Body>
-                <Grid gap={4} templateColumns={['repeat(1, 1fr)']}>
-                  {casts}
-                </Grid>
-              </Dialog.Body>
+        <Dialog.Positioner>
+          <Dialog.Content>
+            <Dialog.Header flexDirection="column">
+              <Dialog.Title>Casts</Dialog.Title>
+              <Field.Root marginY={2}>
+                <Input
+                  onChange={handleChangeKeyword}
+                  placeholder="search"
+                  type="text"
+                  value={keyword}
+                />
+              </Field.Root>
+            </Dialog.Header>
+            <Dialog.CloseTrigger />
 
-              <Dialog.Footer />
-            </Dialog.Content>
-          </Dialog.Root>
-        </Flex>
-      )}
+            <Dialog.Body>
+              <Grid gap={4} templateColumns={['repeat(1, 1fr)']}>
+                {casts}
+              </Grid>
+            </Dialog.Body>
+
+            <Dialog.Footer />
+          </Dialog.Content>
+        </Dialog.Positioner>
+      </Dialog.Root>
     </Skeleton>
   );
 };

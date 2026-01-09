@@ -19,8 +19,10 @@ export default async function Page({
 
   try {
     const movieId = Number(id);
-    const detailData = await getMovieDetailServer(movieId);
-    const creditsData = await getMovieCreditsServer(movieId);
+    const [detailData, creditsData] = await Promise.all([
+      getMovieDetailServer(movieId),
+      getMovieCreditsServer(movieId),
+    ]);
 
     return (
       <MovieDetailPage creditsData={creditsData} detailData={detailData} />

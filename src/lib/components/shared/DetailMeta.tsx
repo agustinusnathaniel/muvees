@@ -9,7 +9,6 @@ import {
 } from '@chakra-ui/react';
 import { BionifiedParagraph } from 'lib/components/BionifiedParagraph';
 import PosterImage from 'lib/components/shared/PosterImage';
-import { useColorMode } from 'lib/components/ui/color-mode';
 
 type DetailData = {
   name: string;
@@ -26,8 +25,6 @@ type DetailMetaProps = {
 };
 
 const DetailMeta = ({ data, extras }: DetailMetaProps) => {
-  const { colorMode } = useColorMode();
-
   return (
     <Box
       alignItems="center"
@@ -69,9 +66,7 @@ const DetailMeta = ({ data, extras }: DetailMetaProps) => {
         </Text>
 
         <Flex alignItems="center" gridColumnGap={2}>
-          <Badge variant={colorMode === 'light' ? 'solid' : 'outline'}>
-            {data.status}
-          </Badge>
+          <Badge variant="outline">{data.status}</Badge>
 
           <Text fontSize="xs" letterSpacing={1} textTransform="uppercase">
             {new Date(data.releasedDate).getFullYear()}

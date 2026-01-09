@@ -1,3 +1,5 @@
+'use client';
+
 import {
   Button,
   Link as ChakraLink,
@@ -9,21 +11,22 @@ import {
 } from '@chakra-ui/react';
 import { convertToPrice } from 'lib/utils/convert-to-price';
 import Link from 'next/link';
+import { useParams } from 'next/navigation';
 import { BiLinkExternal } from 'react-icons/bi';
 import { FaImdb } from 'react-icons/fa';
 import { GrGallery } from 'react-icons/gr';
 
-import type { MovieDetailSectionProps } from './types';
+import type { MovieDetailSectionProps } from '../types';
 
-type MovieDetailAdditionalInfoProps = MovieDetailSectionProps & {
-  id: number;
-};
+type MovieDetailAdditionalInfoProps = MovieDetailSectionProps;
 
 const MovieDetailAdditionalInfo = ({
   isLoading,
   data,
-  id,
 }: MovieDetailAdditionalInfoProps) => {
+  const params = useParams();
+  const { id } = params;
+
   return (
     <Grid gap={8}>
       <Skeleton loading={!!isLoading}>

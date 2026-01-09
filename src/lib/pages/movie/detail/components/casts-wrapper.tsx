@@ -25,7 +25,6 @@ type CastsWrapperProps = {
 
 const CastsWrapper = ({ isLoadingCredits, credits }: CastsWrapperProps) => {
   const { open, onOpen, onClose } = useDisclosure();
-
   const [keyword, setKeyword] = useState<string>('');
 
   const handleChangeKeyword = (event: ChangeEvent<HTMLInputElement>) =>

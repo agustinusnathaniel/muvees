@@ -1,3 +1,5 @@
+'use client';
+
 /**
  * convert number to price with currency string
  * @param num valuation number

@@ -10,8 +10,6 @@ type GenreListProps = MovieDetailSectionProps;
 export const GenreList = ({ data }: GenreListProps) => {
   const { colorMode } = useColorMode();
 
-  console.info({ genres: data.genres });
-
   return (
     <Flex gridGap={2} wrap="wrap">
       {(data.genres ?? []).map((genre) => (

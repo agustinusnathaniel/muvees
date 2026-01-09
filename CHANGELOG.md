@@ -1,6 +1,27 @@
 # Changelog
 
-All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
+All notable changes to this project will be documented in this file. See [commit-and-tag-version](https://github.com/absolute-version/commit-and-tag-version) for commit guidelines.
+
+## [1.3.5](https://github.com/agustinusnathaniel/muvees/compare/v1.3.4...v1.3.5) (2026-01-09)
+
+
+### Bug Fixes
+
+* **deps:** update all dependencies ([#72](https://github.com/agustinusnathaniel/muvees/issues/72)) ([aed260e](https://github.com/agustinusnathaniel/muvees/commit/aed260efbdef9e56247f4f3a1bc33a9815675715))
+* **deps:** update all dependencies ([#75](https://github.com/agustinusnathaniel/muvees/issues/75)) ([1935ea8](https://github.com/agustinusnathaniel/muvees/commit/1935ea8231c9cc2d290bf6eb3d3e911184b5c859))
+* **deps:** update dependency next to v15.1.2 [security] ([#71](https://github.com/agustinusnathaniel/muvees/issues/71)) ([44c6c74](https://github.com/agustinusnathaniel/muvees/commit/44c6c74f98d0c3a7ac22500279856d8c10c5e9fb))
+* **deps:** update dependency next to v15.2.3 [security] ([#73](https://github.com/agustinusnathaniel/muvees/issues/73)) ([f73cf12](https://github.com/agustinusnathaniel/muvees/commit/f73cf12360092d158d0f29eb71249c5afdd3ed2a))
+* **deps:** update dependency next to v15.2.4 [security] ([#74](https://github.com/agustinusnathaniel/muvees/issues/74)) ([6f79ad3](https://github.com/agustinusnathaniel/muvees/commit/6f79ad3647daa2b2dd3a76b99002320e06fdba63))
+* **deps:** update dependency next to v15.4.7 [security] ([#76](https://github.com/agustinusnathaniel/muvees/issues/76)) ([b89174f](https://github.com/agustinusnathaniel/muvees/commit/b89174f4ff6cb48eff6bf2314cac8a46684473ec))
+* security update fix-react2shell-next ([65a6f4e](https://github.com/agustinusnathaniel/muvees/commit/65a6f4e06eb590652e238175a420997b45bd8adb))
+* security update fix-react2shell-next ([7bdda1c](https://github.com/agustinusnathaniel/muvees/commit/7bdda1c1f640ca2edc619f9f8d73bd0c56bb3984))
+* **security:** update next to latest ([2b33a83](https://github.com/agustinusnathaniel/muvees/commit/2b33a831907ee89f18fc08e822bad935ad783392))
+
+
+### Improvements
+
+* migrate to app router and chakra-ui v3 ([#79](https://github.com/agustinusnathaniel/muvees/issues/79)) ([8401876](https://github.com/agustinusnathaniel/muvees/commit/840187655b39a1092cc00e626765d0aa0c21da19))
+* switch axios to ky ([f1a2c1f](https://github.com/agustinusnathaniel/muvees/commit/f1a2c1f11b6e6be1424dfbe2fdf9f498642e02d6))
 
 ### [1.3.4](https://github.com/agustinusnathaniel/muvees/compare/v1.3.3...v1.3.4) (2024-05-13)
 

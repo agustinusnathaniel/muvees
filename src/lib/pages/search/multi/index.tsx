@@ -29,11 +29,9 @@ export const MultiSearchPage = () => {
 
   const handleChangeQuery = useCallback(
     debounce((e: React.ChangeEvent<HTMLInputElement>) => {
-      const queryParam = e.target.value
-        ? `?query=${e.target.value}&page=1`
-        : '';
+      const queryParam = e.target.value ? `query=${e.target.value}&page=1` : '';
 
-      router.push(`/search${queryParam}`);
+      router.push(`/search?${queryParam}`);
     }, 500),
     []
   );
@@ -42,7 +40,7 @@ export const MultiSearchPage = () => {
     (updatedPage: number) => {
       const queryParams = new URL(BASE_URL + pathname).searchParams;
       queryParams.set('page', updatedPage.toString());
-      router.push(`${pathname}?${queryParams.toString()}`);
+      router.push(`/search?${queryParams.toString()}`);
     },
     [pathname, router]
   );

@@ -6,11 +6,11 @@ import type { MediaType } from 'lib/services/tmdb/search/multi/types';
 import { trackEvent } from 'lib/utils/track-event';
 import Link from 'next/link';
 
-const pathMap: Record<MediaType, string> = {
+const pathMap = {
   movie: '/movie',
   tv: '/tv/show',
   person: '/person',
-};
+} as const;
 
 type PosterCardProps = {
   id: number;

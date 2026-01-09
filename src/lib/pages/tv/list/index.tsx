@@ -6,7 +6,7 @@ import PageNavButtons from 'lib/components/shared/list/page-nav-buttons';
 import TvShowListContainer from 'lib/components/tv/TvShowListContainer';
 import { useTVShowByList } from 'lib/services/tmdb/tv/list/index.client';
 import type { TVShowListType } from 'lib/services/tmdb/tv/list/types';
-import { usePathname, useRouter, useSearchParams } from 'next/navigation';
+import { useRouter, useSearchParams } from 'next/navigation';
 
 type TVShowListPageProps = {
   listType: TVShowListType;
@@ -15,7 +15,6 @@ type TVShowListPageProps = {
 const TVShowList = ({ listType }: TVShowListPageProps) => {
   const { push } = useRouter();
   const searchParams = useSearchParams();
-  const pathname = usePathname();
   const qPage = searchParams.get('page');
   const page = qPage && Number(qPage) > 0 ? Number(qPage) : 1;
 
@@ -25,7 +24,7 @@ const TVShowList = ({ listType }: TVShowListPageProps) => {
   });
 
   const handleChangePage = (updatedPage: number) => {
-    push(`${pathname}?page=${updatedPage}`);
+    push(`/tv/${listType}?page=${updatedPage}`);
   };
 
   const handleClickNext = () => {

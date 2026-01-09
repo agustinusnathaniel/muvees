@@ -1,4 +1,4 @@
-import { tmdbServerFetcher } from 'lib/services/tmdb/utils.server';
+import { tmdbServerFetcherCore } from 'lib/services/tmdb/utils.server';
 import { type NextRequest, NextResponse } from 'next/server';
 
 export const revalidate = 86_400;
@@ -14,7 +14,10 @@ export async function GET(
 
   const requestPath = path && path.length > 0 ? `/${path.join('/')}` : '/';
 
-  const data = await tmdbServerFetcher(requestPath, queryParams);
+  const data = await tmdbServerFetcherCore({
+    path: requestPath,
+    params: queryParams,
+  });
 
   return NextResponse.json(data, {
     headers: {

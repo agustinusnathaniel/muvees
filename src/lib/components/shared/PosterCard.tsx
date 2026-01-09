@@ -29,7 +29,7 @@ const PosterCard = ({
   mediaType,
   layout,
   isLastItem,
-  prefetch,
+  prefetch = true,
 }: PosterCardProps) => {
   const handleClick = () => {
     trackEvent({

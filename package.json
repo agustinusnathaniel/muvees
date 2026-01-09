@@ -32,6 +32,7 @@
     "prepare": "husky"
   },
   "dependencies": {
+    "@bprogress/next": "^3.2.12",
     "@chakra-ui/react": "^3.30.0",
     "@emotion/react": "^11.14.0",
     "better-all": "^0.0.1",

@@ -36,18 +36,17 @@ const SliderContainer = ({
         </Flex>
       )}
 
-      {/* <Flex overflowX="scroll" paddingX={[8, 6]}> */}
-      <Flex
-        alignItems="center"
-        flexWrap="nowrap"
-        gridColumnGap={6}
-        minHeight="250px"
-        overflow="visible"
-        overflowX="scroll"
-      >
-        {children}
+      <Flex overflowX="scroll" paddingX={[8, 6]}>
+        <Flex
+          alignItems="center"
+          flexWrap="nowrap"
+          gridColumnGap={6}
+          minHeight="250px"
+          overflow="visible"
+        >
+          {children}
+        </Flex>
       </Flex>
-      {/* </Flex> */}
 
       <Spacer height={4} />
 

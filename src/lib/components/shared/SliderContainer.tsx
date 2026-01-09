@@ -43,7 +43,6 @@ const SliderContainer = ({
           gridColumnGap={6}
           minHeight="250px"
           overflow="visible"
-          overflowX="scroll"
         >
           {children}
         </Flex>
@@ -52,7 +51,7 @@ const SliderContainer = ({
       <Spacer height={4} />
 
       {footer ? (
-        <HStack paddingX={{ base: 8, sm: 0 }} spacing={4}>
+        <HStack gap={4} paddingX={{ base: 8, sm: 0 }}>
           {footer}
         </HStack>
       ) : null}

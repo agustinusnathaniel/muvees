@@ -1,10 +1,8 @@
+'use client';
+
 import {
   Box,
   Drawer,
-  DrawerBody,
-  DrawerContent,
-  DrawerHeader,
-  DrawerOverlay,
   Flex,
   Heading,
   IconButton,
@@ -12,11 +10,10 @@ import {
   Link,
   Spinner,
   Text,
-  useColorMode,
   useDisclosure,
   useMediaQuery,
 } from '@chakra-ui/react';
-import { APP_NAME } from 'pages/_document';
+import { useColorMode } from 'lib/components/ui/color-mode';
 import { useEffect, useState } from 'react';
 import { BiMenu } from 'react-icons/bi';
 
@@ -30,10 +27,10 @@ type AppsType = {
 const PROJECT_LIST_URL = `${process.env.NEXT_PUBLIC_PROJECTS_LIST_URL}`;
 
 const AppMenu = () => {
-  const { isOpen, onOpen, onClose } = useDisclosure();
+  const { open, onOpen, onClose } = useDisclosure();
   const { colorMode } = useColorMode();
 
-  const [isBiggerThanMobile] = useMediaQuery('(min-width: 480px)');
+  const [isBiggerThanMobile] = useMediaQuery(['(min-width: 480px)']);
   const [apps, setApps] = useState<Array<AppsType>>([]);
   const [loading, setLoading] = useState<boolean>(false);
 
@@ -51,50 +48,59 @@ const AppMenu = () => {
     <>
       <IconButton
         aria-label="app-menu"
-        background="none"
-        icon={<BiMenu />}
         marginLeft={2}
         onClick={onOpen}
-      />
-      <Drawer
-        isOpen={isOpen}
-        onClose={onClose}
-        placement={isBiggerThanMobile ? 'right' : 'top'}
+        variant="ghost"
       >
-        <DrawerOverlay />
+        <BiMenu />
+      </IconButton>
+      <Drawer.Root
+        onOpenChange={onClose}
+        open={open}
+        placement={isBiggerThanMobile ? 'end' : 'top'}
+      >
+        <Drawer.Backdrop />
 
-        <DrawerContent>
-          <DrawerHeader>
-            <Heading size="xs">More from sznm.dev</Heading>
-          </DrawerHeader>
+        <Drawer.Positioner>
+          <Drawer.Content>
+            <Drawer.Header>
+              <Drawer.Title>More from sznm.dev</Drawer.Title>
+            </Drawer.Header>
 
-          <DrawerBody>
-            {loading && <Spinner />}
-            {apps
-              .filter((app) => app.name !== APP_NAME)
-              .map(({ name, icon, url, description }) => (
-                <Link _hover={{ textDecoration: 'none' }} href={url} key={name}>
-                  <Flex
-                    _hover={{
-                      backgroundColor:
-                        colorMode === 'light' ? 'gray.200' : 'gray.600',
-                    }}
-                    alignItems="center"
-                    borderRadius={12}
-                    marginY={4}
-                    padding={2}
+            <Drawer.Body>
+              {loading && <Spinner />}
+              {apps
+                .filter((app) => app.name !== 'muvees')
+                .map(({ name, icon, url, description }) => (
+                  <Link
+                    _hover={{ textDecoration: 'none' }}
+                    href={url}
+                    key={name}
                   >
-                    <Image alt={name} src={icon} width={12} />
-                    <Box marginLeft={4}>
-                      <Heading size="sm">{name}</Heading>
-                      {description && <Text fontSize="xs">{description}</Text>}
-                    </Box>
-                  </Flex>
-                </Link>
-              ))}
-          </DrawerBody>
-        </DrawerContent>
-      </Drawer>
+                    <Flex
+                      _hover={{
+                        backgroundColor:
+                          colorMode === 'light' ? 'gray.200' : 'gray.600',
+                      }}
+                      alignItems="center"
+                      borderRadius={12}
+                      marginY={4}
+                      padding={2}
+                    >
+                      <Image alt={name} src={icon} width={12} />
+                      <Box marginLeft={4}>
+                        <Heading size="sm">{name}</Heading>
+                        {description && (
+                          <Text fontSize="xs">{description}</Text>
+                        )}
+                      </Box>
+                    </Flex>
+                  </Link>
+                ))}
+            </Drawer.Body>
+          </Drawer.Content>
+        </Drawer.Positioner>
+      </Drawer.Root>
     </>
   );
 };

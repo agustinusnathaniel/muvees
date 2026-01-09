@@ -1,3 +1,5 @@
+'use client';
+
 import {
   AspectRatio,
   Box,
@@ -9,21 +11,21 @@ import {
 } from '@chakra-ui/react';
 import { BionifiedParagraph } from 'lib/components/BionifiedParagraph';
 import PosterImage from 'lib/components/shared/PosterImage';
-import { usePersonDetail } from 'lib/services/tmdb/person/detail';
-import { countAge } from 'lib/utils/countAge';
-import { useRouter } from 'next/router';
+import { usePersonDetail } from 'lib/services/tmdb/person/detail/index.client';
+import { countAge } from 'lib/utils/count-age';
+import { useParams, useRouter } from 'next/navigation';
 
-const PersonDetailPage = () => {
+export const PersonDetailPage = () => {
   const router = useRouter();
-  const { id } = router.query;
+  const { id } = useParams();
 
-  const { data } = usePersonDetail(Number(id));
+  const { data, isLoading } = usePersonDetail(Number(id));
 
   return (
     <Grid gap={8} marginX={8}>
       <Button onClick={router.back}>back</Button>
 
-      <Skeleton isLoaded={!!data}>
+      <Skeleton loading={isLoading}>
         <Box
           alignItems="start"
           display={{ base: 'grid', md: 'flex' }}
@@ -93,5 +95,3 @@ const PersonDetailPage = () => {
     </Grid>
   );
 };
-
-export default PersonDetailPage;

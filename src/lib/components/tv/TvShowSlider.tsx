@@ -1,4 +1,6 @@
-import { ChipButton } from 'lib/components/shared/ChipButton';
+'use client';
+
+import { Button } from '@chakra-ui/react';
 import PosterCard from 'lib/components/shared/PosterCard';
 import SliderContainer from 'lib/components/shared/SliderContainer';
 import { MediaType } from 'lib/services/tmdb/search/multi/types';
@@ -7,7 +9,7 @@ import type {
   TVShowListType,
 } from 'lib/services/tmdb/tv/list/types';
 import Link from 'next/link';
-import { useRouter } from 'next/router';
+import { useRouter } from 'next/navigation';
 
 type TvShowListTypeButtonProps = {
   listType: TVShowListType;
@@ -15,9 +17,11 @@ type TvShowListTypeButtonProps = {
 
 const TvShowListTypeButton = ({ listType }: TvShowListTypeButtonProps) => {
   return (
-    <ChipButton as={Link} href={`/tv/${listType}?page=1`}>
-      {listType.replaceAll('_', ' ')}
-    </ChipButton>
+    <Button asChild>
+      <Link href={`/tv/${listType}?page=1`}>
+        {listType.replaceAll('_', ' ')}
+      </Link>
+    </Button>
   );
 };
 

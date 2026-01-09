@@ -22,8 +22,9 @@ const ImageSection = ({ title, data, maxHeight }: ImageSectionProps) => {
             <Link
               display="contents"
               href={`${IMAGE_URL_ORIGINAL}${image.file_path}`}
-              isExternal
               key={image.file_path}
+              rel="noopener noreferrer"
+              target="_blank"
             >
               <PosterImage
                 key={image.file_path}

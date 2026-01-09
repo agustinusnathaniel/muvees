@@ -1,10 +1,12 @@
+'use client';
+
 import { Flex, Grid, Heading, IconButton } from '@chakra-ui/react';
-import { trackEvent } from 'lib/utils/trackEvent';
+import { ColorModeButton } from 'lib/components/ui/color-mode';
+import { trackEvent } from 'lib/utils/track-event';
 import Link from 'next/link';
 import { GoSearch } from 'react-icons/go';
 
 import AppMenu from './AppMenu';
-import ThemeToggle from './ThemeToggle';
 
 const Header = () => {
   const handleClickSearch = () => {
@@ -16,23 +18,27 @@ const Header = () => {
 
   return (
     <Flex align="center" as="header" padding="8" width="full">
-      <Link href="/">
-        <Heading as="h1" fontSize={['md', 'xl']}>
-          muvees
-        </Heading>
-      </Link>
+      <Heading asChild fontSize={['md', 'xl']}>
+        <Link href="/">muvees</Link>
+      </Heading>
 
-      <Grid gap={1} marginLeft="auto" templateColumns="repeat(3, 1fr)">
-        <Link href="/search" legacyBehavior passHref>
-          <IconButton
-            aria-label="search"
-            as="a"
-            background="none"
-            icon={<GoSearch />}
-            onClick={handleClickSearch}
-          />
-        </Link>
-        <ThemeToggle />
+      <Grid
+        alignItems="center"
+        gap={1}
+        marginLeft="auto"
+        templateColumns="repeat(3, 1fr)"
+      >
+        <IconButton
+          aria-label="search"
+          asChild
+          onClick={handleClickSearch}
+          variant="ghost"
+        >
+          <Link href="/search">
+            <GoSearch />
+          </Link>
+        </IconButton>
+        <ColorModeButton suppressHydrationWarning />
         <AppMenu />
       </Grid>
     </Flex>

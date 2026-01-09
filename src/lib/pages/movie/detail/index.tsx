@@ -1,32 +1,23 @@
-import { Button, Grid } from '@chakra-ui/react';
-import MovieDetailAdditionalInfo from 'lib/components/movie/detail/AdditionalInfo';
-import CastsWrapper from 'lib/components/movie/detail/CastsWrapper';
-import MovieDetailMeta from 'lib/components/movie/detail/Meta';
-import { handleRouteBack } from 'lib/utils/handleRouteBack';
+import { Grid } from '@chakra-ui/react';
+import DetailMeta from 'lib/components/shared/DetailMeta';
+import MovieDetailAdditionalInfo from 'lib/pages/movie/detail/components/additional-info';
+import { BackButton } from 'lib/pages/movie/detail/components/back-button';
+import CastsWrapper from 'lib/pages/movie/detail/components/casts-wrapper';
+import { GenreList } from 'lib/pages/movie/detail/components/genre-list';
+import type { MovieCreditsResponse } from 'lib/services/tmdb/movie/credits/types';
+import type { MovieDetailResponse } from 'lib/services/tmdb/movie/detail/types';
 import Head from 'next/head';
-import { useRouter } from 'next/router';
 import { generateNextSeo } from 'next-seo/pages';
-import { useEffect, useState } from 'react';
 
-import type { MovieDetailPageProps } from './types';
+export type MovieDetailPageProps = {
+  detailData: MovieDetailResponse;
+  creditsData: MovieCreditsResponse;
+};
 
-const MovieDetailPage = ({
+export const MovieDetailPage = ({
   detailData: data,
   creditsData: credits,
 }: MovieDetailPageProps) => {
-  const router = useRouter();
-  const [movieId, setMovieId] = useState<number>();
-
-  const {
-    query: { id },
-  } = router;
-
-  useEffect(() => {
-    if (id) {
-      setMovieId(Number(id));
-    }
-  }, [id]);
-
   return (
     <Grid gridGap={[8, 16]} paddingX={8}>
       <Head>
@@ -37,11 +28,19 @@ const MovieDetailPage = ({
       </Head>
 
       <Grid flexBasis={['100%']} rowGap={8}>
-        <Button onClick={handleRouteBack(router)} width={['full', 'full', 100]}>
-          back
-        </Button>
+        <BackButton />
 
-        <MovieDetailMeta data={data} />
+        <DetailMeta
+          data={{
+            name: data.title,
+            tagline: data.tagline,
+            status: data.status,
+            releasedDate: data.release_date,
+            posterPath: data.poster_path,
+            overview: data.overview,
+          }}
+          extras={<GenreList data={data} />}
+        />
       </Grid>
 
       <Grid
@@ -50,12 +49,10 @@ const MovieDetailPage = ({
         gap={8}
         templateColumns={{ base: 'minmax(0, 1fr)', md: '1fr minmax(0, 2fr)' }}
       >
-        <MovieDetailAdditionalInfo data={data} id={movieId ?? 0} />
+        <MovieDetailAdditionalInfo data={data} />
 
         <CastsWrapper credits={credits} />
       </Grid>
     </Grid>
   );
 };
-
-export default MovieDetailPage;

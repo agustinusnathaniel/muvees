@@ -22,6 +22,7 @@ const TvShowListContainer = ({
           layout="grid"
           mediaType={MediaType.Tv}
           name={show.name}
+          prefetch={false}
         />
       ))}
     </GridContainer>

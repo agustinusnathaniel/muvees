@@ -3,7 +3,7 @@ import MotionBox from 'lib/components/MotionBox';
 import PosterImage from 'lib/components/shared/PosterImage';
 import PosterLabel from 'lib/components/shared/PosterLabel';
 import type { MediaType } from 'lib/services/tmdb/search/multi/types';
-import { trackEvent } from 'lib/utils/trackEvent';
+import { trackEvent } from 'lib/utils/track-event';
 import Link from 'next/link';
 
 const pathMap: Record<MediaType, string> = {
@@ -19,6 +19,7 @@ type PosterCardProps = {
   mediaType: MediaType;
   layout: 'flex' | 'grid';
   isLastItem?: boolean;
+  prefetch?: boolean;
 };
 
 const PosterCard = ({
@@ -28,6 +29,7 @@ const PosterCard = ({
   mediaType,
   layout,
   isLastItem,
+  prefetch = true,
 }: PosterCardProps) => {
   const handleClick = () => {
     trackEvent({
@@ -37,18 +39,18 @@ const PosterCard = ({
   };
 
   return (
-    <Link href={`${pathMap[mediaType]}/${id}`} legacyBehavior passHref>
-      <MotionBox
-        as="a"
-        onClick={handleClick}
-        paddingRight={isLastItem ? [8, 6] : undefined}
-        position="relative"
-        role="group"
-        textAlign="center"
-        whileHover={{ scale: 1.05 }}
-        {...(layout === 'flex' && { flex: '0 0 auto' })}
-      >
-        {layout === 'grid' ? (
+    <MotionBox
+      // https://panda-css.com/docs/docs/concepts/conditional-styles#group-selectors
+      className="group"
+      onClick={handleClick}
+      paddingRight={isLastItem ? [8, 6] : undefined}
+      position="relative"
+      textAlign="center"
+      whileHover={{ scale: 1.05 }}
+      {...(layout === 'flex' && { flex: '0 0 auto' })}
+    >
+      {layout === 'grid' ? (
+        <Link href={`${pathMap[mediaType]}/${id}`} prefetch={prefetch}>
           <AspectRatio
             _groupHover={{ backgroundColor: 'black' }}
             borderRadius={24}
@@ -56,18 +58,20 @@ const PosterCard = ({
           >
             <PosterImage layout={layout} src={imageUrl} />
           </AspectRatio>
-        ) : (
-          <Box
-            _groupHover={{ backgroundColor: 'black' }}
-            as="button"
-            borderRadius={24}
-          >
+        </Link>
+      ) : (
+        <Box
+          _groupHover={{ backgroundColor: 'black' }}
+          asChild
+          borderRadius={24}
+        >
+          <Link href={`${pathMap[mediaType]}/${id}`} prefetch={prefetch}>
             <PosterImage layout={layout} src={imageUrl} />
-          </Box>
-        )}
-        <PosterLabel label={name ?? ''} />
-      </MotionBox>
-    </Link>
+          </Link>
+        </Box>
+      )}
+      <PosterLabel label={name ?? ''} />
+    </MotionBox>
   );
 };
 

@@ -19,6 +19,7 @@ const MoviesContainer = ({ movies, isLoading }: MoviesContainerProps) => {
           layout="grid"
           mediaType={MediaType.Movie}
           name={movie.title}
+          prefetch={false}
         />
       ))}
     </GridContainer>

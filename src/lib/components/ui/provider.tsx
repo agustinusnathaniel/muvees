@@ -10,7 +10,9 @@ export function Provider(props: React.PropsWithChildren) {
   return (
     <ProgressProvider color="#00aaaa" height="4px" shallowRouting>
       <ChakraProvider value={customTheme}>
-        <ColorModeProvider>{props.children}</ColorModeProvider>
+        <ColorModeProvider defaultTheme="system" enableSystem>
+          {props.children}
+        </ColorModeProvider>
       </ChakraProvider>
     </ProgressProvider>
   );

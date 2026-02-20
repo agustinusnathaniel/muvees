@@ -5,42 +5,42 @@
  */
 
 export interface MultiSearchParams {
-  language?: string;
-  query: string;
-  page?: number;
   include_adult?: boolean;
+  language?: string;
+  page?: number;
+  query: string;
   region?: string;
 }
 
 export interface MultiSearchResponse {
   page: number;
   results: Array<MultiSearchResult>;
-  total_results: number;
   total_pages: number;
+  total_results: number;
 }
 
 export interface MultiSearchResult {
-  poster_path?: null | string;
-  popularity: number;
-  id: number;
-  overview?: string;
-  backdrop_path?: null | string;
-  vote_average?: number;
-  media_type: MediaType;
-  first_air_date?: string;
-  origin_country?: Array<string>;
-  genre_ids?: Array<number>;
-  original_language?: OriginalLanguage;
-  vote_count?: number;
-  name?: string;
-  original_name?: string;
   adult?: boolean;
-  release_date?: Date;
+  backdrop_path?: null | string;
+  first_air_date?: string;
+  genre_ids?: Array<number>;
+  id: number;
+  known_for?: Array<MultiSearchResult>;
+  media_type: MediaType;
+  name?: string;
+  origin_country?: Array<string>;
+  original_language?: OriginalLanguage;
+  original_name?: string;
   original_title?: string;
+  overview?: string;
+  popularity: number;
+  poster_path?: null | string;
+  profile_path?: null | string;
+  release_date?: Date;
   title?: string;
   video?: boolean;
-  profile_path?: null | string;
-  known_for?: Array<MultiSearchResult>;
+  vote_average?: number;
+  vote_count?: number;
 }
 
 export enum MediaType {

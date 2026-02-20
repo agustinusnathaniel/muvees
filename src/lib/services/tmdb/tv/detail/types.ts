@@ -5,8 +5,8 @@
  */
 
 export interface TvShowDetailParams {
-  language?: string;
   append_to_response?: string;
+  language?: string;
 }
 
 export interface TvShowDetail {
@@ -22,8 +22,8 @@ export interface TvShowDetail {
   last_air_date: Date;
   last_episode_to_air: LastEpisodeToAir;
   name: string;
-  next_episode_to_air?: null;
   networks: Array<Network>;
+  next_episode_to_air?: null;
   number_of_episodes: number;
   number_of_seasons: number;
   origin_country: Array<string>;
@@ -44,10 +44,10 @@ export interface TvShowDetail {
 }
 
 export interface CreatedBy {
-  id: number;
   credit_id: string;
-  name: string;
   gender: number;
+  id: number;
+  name: string;
   profile_path?: string;
 }
 
@@ -70,9 +70,9 @@ export interface LastEpisodeToAir {
 }
 
 export interface Network {
-  name: string;
   id: number;
   logo_path?: null | string;
+  name: string;
   origin_country: string;
 }
 

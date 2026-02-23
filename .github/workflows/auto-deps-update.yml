@@ -27,6 +27,8 @@ jobs:
         run: |
           pnpm install
           pnpm update --latest
+          pnpm dedupe
+          pnpm ultracite:fix
       
       - name: Run checks
         run: pnpm check:turbo

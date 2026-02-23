@@ -26,7 +26,7 @@ jobs:
       - name: Update dependencies
         run: |
           pnpm install
-          pnpm update --latest
+          pnpm update
           pnpm dedupe
           pnpm ultracite:fix
       

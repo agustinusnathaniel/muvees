@@ -34,11 +34,11 @@ const TvShowDetailPage = ({ data }: TvShowDetailPageProps) => {
         <DetailMeta
           data={{
             name: data.name,
-            posterPath: data.poster_path,
-            status: data.status,
-            releasedDate: data.first_air_date,
-            tagline: data.tagline,
             overview: data.overview,
+            posterPath: data.poster_path,
+            releasedDate: data.first_air_date,
+            status: data.status,
+            tagline: data.tagline,
           }}
           extras={
             <Flex gridGap={2} wrap="wrap">

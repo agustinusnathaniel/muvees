@@ -17,42 +17,40 @@ export type MovieDetailPageProps = {
 export const MovieDetailPage = ({
   detailData: data,
   creditsData: credits,
-}: MovieDetailPageProps) => {
-  return (
-    <Grid gridGap={[8, 16]} paddingX={8}>
-      <Head>
-        {generateNextSeo({
-          description: data.tagline,
-          title: data.title,
-        })}
-      </Head>
+}: MovieDetailPageProps) => (
+  <Grid gridGap={[8, 16]} paddingX={8}>
+    <Head>
+      {generateNextSeo({
+        description: data.tagline,
+        title: data.title,
+      })}
+    </Head>
 
-      <Grid flexBasis={['100%']} rowGap={8}>
-        <BackButton />
+    <Grid flexBasis={['100%']} rowGap={8}>
+      <BackButton />
 
-        <DetailMeta
-          data={{
-            name: data.title,
-            tagline: data.tagline,
-            status: data.status,
-            releasedDate: data.release_date,
-            posterPath: data.poster_path,
-            overview: data.overview,
-          }}
-          extras={<GenreList data={data} />}
-        />
-      </Grid>
-
-      <Grid
-        alignItems="center"
-        flexBasis={['100%']}
-        gap={8}
-        templateColumns={{ base: 'minmax(0, 1fr)', md: '1fr minmax(0, 2fr)' }}
-      >
-        <MovieDetailAdditionalInfo data={data} />
-
-        <CastsWrapper credits={credits} />
-      </Grid>
+      <DetailMeta
+        data={{
+          name: data.title,
+          overview: data.overview,
+          posterPath: data.poster_path,
+          releasedDate: data.release_date,
+          status: data.status,
+          tagline: data.tagline,
+        }}
+        extras={<GenreList data={data} />}
+      />
     </Grid>
-  );
-};
+
+    <Grid
+      alignItems="center"
+      flexBasis={['100%']}
+      gap={8}
+      templateColumns={{ base: 'minmax(0, 1fr)', md: '1fr minmax(0, 2fr)' }}
+    >
+      <MovieDetailAdditionalInfo data={data} />
+
+      <CastsWrapper credits={credits} />
+    </Grid>
+  </Grid>
+);

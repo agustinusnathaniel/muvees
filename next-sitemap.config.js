@@ -1,7 +1,7 @@
 /** @type {import('next-sitemap').IConfig} */
 const NextSitemapConfig = {
-  siteUrl: 'https://muvees.sznm.dev',
   generateRobotsTxt: true,
+  siteUrl: 'https://muvees.sznm.dev',
 };
 
 module.exports = NextSitemapConfig;

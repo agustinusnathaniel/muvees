@@ -12,51 +12,49 @@ const SliderContainer = ({
   onClickSeeMore,
   children,
   footer,
-}: SliderContainerProps) => {
-  return (
-    <Box>
-      {sectionTitle && (
-        <Flex alignItems="center" marginX={{ base: 8, sm: 0 }}>
-          <Heading
-            fontSize={{ base: 'md', sm: 'lg' }}
-            fontWeight="400"
-            letterSpacing={2}
-            textTransform="uppercase"
-          >
-            {sectionTitle}
-          </Heading>
-
-          <Button
-            marginLeft="auto"
-            onClick={onClickSeeMore}
-            size={{ base: 'xs', sm: 'sm' }}
-          >
-            see more
-          </Button>
-        </Flex>
-      )}
-
-      <Flex overflowX="scroll" paddingX={[8, 6]}>
-        <Flex
-          alignItems="center"
-          flexWrap="nowrap"
-          gridColumnGap={6}
-          minHeight="250px"
-          overflow="visible"
+}: SliderContainerProps) => (
+  <Box>
+    {sectionTitle && (
+      <Flex alignItems="center" marginX={{ base: 8, sm: 0 }}>
+        <Heading
+          fontSize={{ base: 'md', sm: 'lg' }}
+          fontWeight="400"
+          letterSpacing={2}
+          textTransform="uppercase"
         >
-          {children}
-        </Flex>
+          {sectionTitle}
+        </Heading>
+
+        <Button
+          marginLeft="auto"
+          onClick={onClickSeeMore}
+          size={{ base: 'xs', sm: 'sm' }}
+        >
+          see more
+        </Button>
       </Flex>
+    )}
 
-      <Spacer height={4} />
+    <Flex overflowX="scroll" paddingX={[8, 6]}>
+      <Flex
+        alignItems="center"
+        flexWrap="nowrap"
+        gridColumnGap={6}
+        minHeight="250px"
+        overflow="visible"
+      >
+        {children}
+      </Flex>
+    </Flex>
 
-      {footer ? (
-        <HStack gap={4} paddingX={{ base: 8, sm: 0 }}>
-          {footer}
-        </HStack>
-      ) : null}
-    </Box>
-  );
-};
+    <Spacer height={4} />
+
+    {footer ? (
+      <HStack gap={4} paddingX={{ base: 8, sm: 0 }}>
+        {footer}
+      </HStack>
+    ) : null}
+  </Box>
+);
 
 export default SliderContainer;

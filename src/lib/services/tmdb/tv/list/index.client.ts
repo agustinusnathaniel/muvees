@@ -20,13 +20,13 @@ export const useTVShowByList = ({
   fallbackData,
 }: UseTVShowByListArgs) =>
   useTmdbSWR<TVShowListResponse>({
-    path: `/tv/${listType}`,
-    params,
     fallbackData,
+    params,
+    path: `/tv/${listType}`,
   });
 
 export const useTVShowSearchResultList = (params: SearchTVShowParams) =>
   useTmdbSWR<TVShowListResponse>({
-    path: TV_SHOW_SEARCH_RESOURCE_PATH,
     params,
+    path: TV_SHOW_SEARCH_RESOURCE_PATH,
   });

@@ -57,10 +57,10 @@ export const MultiSearchPage = () => {
   const pageNavButtonProps: PageNavButtonProps = useMemo(
     () => ({
       isLoading,
-      page,
-      totalPages: data?.total_pages ?? 0,
       onClickNext: handleClickNext,
       onClickPrev: handleClickPrev,
+      page,
+      totalPages: data?.total_pages ?? 0,
     }),
     [data?.total_pages, handleClickNext, handleClickPrev, isLoading, page]
   );

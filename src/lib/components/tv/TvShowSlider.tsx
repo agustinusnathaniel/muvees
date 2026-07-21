@@ -15,15 +15,11 @@ type TvShowListTypeButtonProps = {
   listType: TVShowListType;
 };
 
-const TvShowListTypeButton = ({ listType }: TvShowListTypeButtonProps) => {
-  return (
-    <Button asChild>
-      <Link href={`/tv/${listType}?page=1`}>
-        {listType.replaceAll('_', ' ')}
-      </Link>
-    </Button>
-  );
-};
+const TvShowListTypeButton = ({ listType }: TvShowListTypeButtonProps) => (
+  <Button asChild>
+    <Link href={`/tv/${listType}?page=1`}>{listType.replaceAll('_', ' ')}</Link>
+  </Button>
+);
 
 const tvShowListTypes: Array<TVShowListType> = [
   'on_the_air',

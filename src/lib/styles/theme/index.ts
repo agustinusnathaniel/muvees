@@ -12,10 +12,6 @@ const buttonRecipe = defineRecipe({
 });
 
 const tokens = defineTokens({
-  fonts: {
-    heading: { value: 'var(--font-body)' },
-    body: { value: 'var(--font-body)' },
-  },
   colors: {
     gray: {
       50: { value: '#e8e9e9' },
@@ -30,14 +26,18 @@ const tokens = defineTokens({
       900: { value: '#050606' },
     },
   },
+  fonts: {
+    body: { value: 'var(--font-body)' },
+    heading: { value: 'var(--font-body)' },
+  },
 });
 
 export const customTheme = createSystem(defaultConfig, {
   theme: {
-    tokens,
     recipes: {
       button: buttonRecipe,
     },
+    tokens,
   },
 });
 

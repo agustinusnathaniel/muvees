@@ -15,8 +15,8 @@ export async function GET(
   const requestPath = path && path.length > 0 ? `/${path.join('/')}` : '/';
 
   const data = await tmdbServerFetcherCore({
-    path: requestPath,
     params: queryParams,
+    path: requestPath,
   });
 
   return NextResponse.json(data, {

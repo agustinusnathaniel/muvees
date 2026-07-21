@@ -60,13 +60,6 @@ const securityHeaders = [
 ];
 
 const nextConfig: NextConfig = {
-  reactStrictMode: true,
-  logging: {
-    fetches: {
-      fullUrl: true,
-    },
-  },
-  typedRoutes: true,
   /**
    * @docs
    * - https://nextjs.org/docs/app/guides/content-security-policy#without-nonces
@@ -74,11 +67,18 @@ const nextConfig: NextConfig = {
   headers() {
     return [
       {
-        source: '/(.*)',
         headers: securityHeaders,
+        source: '/(.*)',
       },
     ];
   },
+  logging: {
+    fetches: {
+      fullUrl: true,
+    },
+  },
+  reactStrictMode: true,
+  typedRoutes: true,
 };
 
 export default nextConfig;

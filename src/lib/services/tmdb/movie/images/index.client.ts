@@ -8,7 +8,7 @@ export const useMovieImages = (
   isReady?: boolean
 ) =>
   useTmdbSWR<MovieImagesResponse>({
-    path: `/movie/${id}/images`,
     fallbackData,
     isReady,
+    path: `/movie/${id}/images`,
   });

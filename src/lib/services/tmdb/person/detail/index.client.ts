@@ -8,7 +8,7 @@ export const usePersonDetail = (
   isReady?: boolean
 ) =>
   useTmdbSWR<PersonDetailResponse>({
-    path: `/person/${id}`,
     fallbackData,
     isReady,
+    path: `/person/${id}`,
   });

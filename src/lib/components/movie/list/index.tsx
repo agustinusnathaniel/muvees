@@ -78,9 +78,9 @@ export const MovieListContainer = ({
   useEffect(() => {
     try {
       window.scroll({
-        top: 0,
-        left: 0,
         behavior: 'smooth',
+        left: 0,
+        top: 0,
       });
     } catch {
       window.scrollTo(0, 0);
@@ -105,12 +105,12 @@ export const MovieListContainer = ({
   }, [listMode, query, genre]);
 
   const pageNavButtonProps: MovieListPageNavButtonProps = {
-    isLoading,
-    page,
-    totalPages,
-    listMode,
-    section,
     genre,
+    isLoading,
+    listMode,
+    page,
+    section,
+    totalPages,
   };
 
   const generatePageHeadTitle = () => {

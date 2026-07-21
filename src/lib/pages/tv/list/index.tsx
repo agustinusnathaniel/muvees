@@ -38,10 +38,10 @@ const TVShowList = ({ listType }: TVShowListPageProps) => {
 
   const pageNavButtonProps: PageNavButtonProps = {
     isLoading,
-    page,
-    totalPages: data?.total_pages ?? 0,
     onClickNext: handleClickNext,
     onClickPrev: handleClickPrev,
+    page,
+    totalPages: data?.total_pages ?? 0,
   };
 
   return (

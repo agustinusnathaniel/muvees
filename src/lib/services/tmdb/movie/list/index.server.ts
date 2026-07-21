@@ -13,11 +13,11 @@ export const getMovieListServer = ({
   revalidate?: number;
 }) =>
   tmdbServerFetcherCore<MovieListResponse>({
+    params,
     path: movieListEndpoint({
-      section,
       query: params?.query,
+      section,
       with_genres: params?.with_genres,
     }),
-    params,
     reqInit: { next: { revalidate } },
   });

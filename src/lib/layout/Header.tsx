@@ -11,8 +11,8 @@ import AppMenu from './AppMenu';
 const Header = () => {
   const handleClickSearch = () => {
     trackEvent({
-      eventName: 'Nav Link: Search',
       eventData: { type: 'navigate' },
+      eventName: 'Nav Link: Search',
     });
   };
 

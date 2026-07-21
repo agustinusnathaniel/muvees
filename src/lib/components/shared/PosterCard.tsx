@@ -8,8 +8,8 @@ import Link from 'next/link';
 
 const pathMap = {
   movie: '/movie',
-  tv: '/tv/show',
   person: '/person',
+  tv: '/tv/show',
 } as const;
 
 type PosterCardProps = {
@@ -33,8 +33,8 @@ const PosterCard = ({
 }: PosterCardProps) => {
   const handleClick = () => {
     trackEvent({
-      eventName: `${mediaType}: ${name} - ${id}`,
       eventData: { type: 'navigate' },
+      eventName: `${mediaType}: ${name} - ${id}`,
     });
   };
 

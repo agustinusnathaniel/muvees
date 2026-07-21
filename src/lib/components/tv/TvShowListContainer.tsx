@@ -11,22 +11,20 @@ type TvShowListContainerProps = {
 const TvShowListContainer = ({
   shows,
   isLoading,
-}: TvShowListContainerProps) => {
-  return (
-    <GridContainer isLoading={isLoading}>
-      {shows?.map((show) => (
-        <PosterCard
-          id={show.id ?? 0}
-          imageUrl={show.poster_path}
-          key={`${show.name}-${show.id}`}
-          layout="grid"
-          mediaType={MediaType.Tv}
-          name={show.name}
-          prefetch={false}
-        />
-      ))}
-    </GridContainer>
-  );
-};
+}: TvShowListContainerProps) => (
+  <GridContainer isLoading={isLoading}>
+    {shows?.map((show) => (
+      <PosterCard
+        id={show.id ?? 0}
+        imageUrl={show.poster_path}
+        key={`${show.name}-${show.id}`}
+        layout="grid"
+        mediaType={MediaType.Tv}
+        name={show.name}
+        prefetch={false}
+      />
+    ))}
+  </GridContainer>
+);
 
 export default TvShowListContainer;

@@ -10,33 +10,31 @@ type ImageSectionProps = {
   maxHeight?: number;
 };
 
-const ImageSection = ({ title, data, maxHeight }: ImageSectionProps) => {
-  return (
-    <Box>
-      <Heading fontSize="2xl" marginX={8}>
-        {title}
-      </Heading>
-      <Flex overflowX="scroll" paddingX={[8, 6]}>
-        <Flex alignItems="center" gridGap={4} minHeight={360}>
-          {data.map((image) => (
-            <Link
-              display="contents"
-              href={`${IMAGE_URL_ORIGINAL}${image.file_path}`}
+const ImageSection = ({ title, data, maxHeight }: ImageSectionProps) => (
+  <Box>
+    <Heading fontSize="2xl" marginX={8}>
+      {title}
+    </Heading>
+    <Flex overflowX="scroll" paddingX={[8, 6]}>
+      <Flex alignItems="center" gridGap={4} minHeight={360}>
+        {data.map((image) => (
+          <Link
+            display="contents"
+            href={`${IMAGE_URL_ORIGINAL}${image.file_path}`}
+            key={image.file_path}
+            rel="noopener noreferrer"
+            target="_blank"
+          >
+            <PosterImage
               key={image.file_path}
-              rel="noopener noreferrer"
-              target="_blank"
-            >
-              <PosterImage
-                key={image.file_path}
-                maxHeight={maxHeight}
-                src={image.file_path}
-              />
-            </Link>
-          ))}
-        </Flex>
+              maxHeight={maxHeight}
+              src={image.file_path}
+            />
+          </Link>
+        ))}
       </Flex>
-    </Box>
-  );
-};
+    </Flex>
+  </Box>
+);
 
 export default ImageSection;

@@ -15,15 +15,13 @@ type MovieListTypeButtonProps = {
   listType: ListType;
 };
 
-const MovieListTypeButton = ({ listType }: MovieListTypeButtonProps) => {
-  return (
-    <Button asChild>
-      <Link href={`/movies/${listType}?page=1`}>
-        {listType.replaceAll('_', ' ')}
-      </Link>
-    </Button>
-  );
-};
+const MovieListTypeButton = ({ listType }: MovieListTypeButtonProps) => (
+  <Button asChild>
+    <Link href={`/movies/${listType}?page=1`}>
+      {listType.replaceAll('_', ' ')}
+    </Link>
+  </Button>
+);
 
 const movieListTypes: Array<ListType> = [
   'now_playing',

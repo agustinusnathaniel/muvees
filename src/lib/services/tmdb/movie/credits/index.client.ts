@@ -8,7 +8,7 @@ export const useMovieCredits = (
   isReady?: boolean
 ) =>
   useTmdbSWR<MovieCreditsResponse>({
-    path: `/movie/${id}/credits`,
     fallbackData,
     isReady,
+    path: `/movie/${id}/credits`,
   });

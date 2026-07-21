@@ -10,14 +10,14 @@ export const useMovieList = (
   isReady?: boolean
 ) =>
   useTmdbSWR<MovieListResponse>({
-    path: movieListEndpoint({
-      section,
-      query: params?.query,
-      with_genres: params?.with_genres,
-    }),
-    params,
     fallbackData,
     isReady,
+    params,
+    path: movieListEndpoint({
+      query: params?.query,
+      section,
+      with_genres: params?.with_genres,
+    }),
   });
 
 export const useMovieRecommendations = (id: number) =>

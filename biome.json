@@ -21,6 +21,8 @@
       "!src/**/*/utils.ts",
       "!src/**/*.css",
       "!*.d.ts",
+      "!*.svg",
+      "!**/*.svg",
       "!.agents",
       "!.claude"
     ]
@@ -35,13 +37,21 @@
       "next": "recommended"
     },
     "rules": {
-      "recommended": true,
+      "preset": "recommended",
       "correctness": {
         "useImageSize": "off"
       },
+      "complexity": {
+        "noRedundantDefaultExport": "off"
+      },
+      "suspicious": {
+        "noLeakedRender": "off",
+        "noUnnecessaryConditions": "off"
+      },
       "performance": {
         "noBarrelFile": "off",
-        "useTopLevelRegex": "error"
+        "useTopLevelRegex": "error",
+        "noJsxPropsBind": "off"
       },
       "style": {
         "noDefaultExport": "off",

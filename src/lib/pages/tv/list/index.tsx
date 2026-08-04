@@ -1,18 +1,19 @@
 'use client';
 
-import { Grid, Heading, Text } from '@chakra-ui/react';
+import { Flex, Grid, Heading, Spinner, Text } from '@chakra-ui/react';
 import type { PageNavButtonProps } from 'lib/components/shared/list/page-nav-buttons';
 import PageNavButtons from 'lib/components/shared/list/page-nav-buttons';
 import TvShowListContainer from 'lib/components/tv/TvShowListContainer';
 import { useTVShowByList } from 'lib/services/tmdb/tv/list/index.client';
 import type { TVShowListType } from 'lib/services/tmdb/tv/list/types';
 import { useRouter, useSearchParams } from 'next/navigation';
+import { Suspense } from 'react';
 
 type TVShowListPageProps = {
   listType: TVShowListType;
 };
 
-const TVShowList = ({ listType }: TVShowListPageProps) => {
+const TVShowListInner = ({ listType }: TVShowListPageProps) => {
   const { push } = useRouter();
   const searchParams = useSearchParams();
   const qPage = searchParams.get('page');
@@ -56,5 +57,17 @@ const TVShowList = ({ listType }: TVShowListPageProps) => {
     </Grid>
   );
 };
+
+const TVShowList = ({ listType }: TVShowListPageProps) => (
+  <Suspense
+    fallback={
+      <Flex align="center" justify="center" paddingY={16}>
+        <Spinner size="xl" />
+      </Flex>
+    }
+  >
+    <TVShowListInner listType={listType} />
+  </Suspense>
+);
 
 export default TVShowList;

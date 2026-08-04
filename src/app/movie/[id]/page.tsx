@@ -3,9 +3,6 @@ import { getMovieCreditsServer } from 'lib/services/tmdb/movie/credits/index.ser
 import { getMovieDetailServer } from 'lib/services/tmdb/movie/detail/index.server';
 import { notFound } from 'next/navigation';
 
-export const revalidate = 604_800;
-export const dynamic = 'force-static';
-
 export default async function Page({
   params,
 }: {

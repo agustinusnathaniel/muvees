@@ -1,6 +1,6 @@
 'use client';
 
-import { Grid, Input, Skeleton, Text } from '@chakra-ui/react';
+import { Flex, Grid, Input, Skeleton, Spinner, Text } from '@chakra-ui/react';
 import type { PageNavButtonProps } from 'lib/components/shared/list/page-nav-buttons';
 import PageNavButtons from 'lib/components/shared/list/page-nav-buttons';
 import PosterCard from 'lib/components/shared/PosterCard';
@@ -8,9 +8,9 @@ import { BASE_URL } from 'lib/constants/baseUrl';
 import { useMultiSearchResult } from 'lib/services/tmdb/search/multi/index.client';
 import debounce from 'lodash/debounce';
 import { usePathname, useRouter, useSearchParams } from 'next/navigation';
-import { useCallback, useMemo } from 'react';
+import { Suspense, useCallback, useMemo } from 'react';
 
-export const MultiSearchPage = () => {
+const MultiSearchPageInner = () => {
   const router = useRouter();
   const searchParams = useSearchParams();
   const pathname = usePathname();
@@ -124,3 +124,15 @@ export const MultiSearchPage = () => {
     </Grid>
   );
 };
+
+export const MultiSearchPage = () => (
+  <Suspense
+    fallback={
+      <Flex align="center" justify="center" paddingY={16}>
+        <Spinner size="xl" />
+      </Flex>
+    }
+  >
+    <MultiSearchPageInner />
+  </Suspense>
+);

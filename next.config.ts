@@ -61,6 +61,15 @@ const securityHeaders = [
 
 const nextConfig: NextConfig = {
   /**
+   * Cache Components enables component/function-level caching with the
+   * `use cache` directive and PPR as the default behavior.
+   * @docs https://nextjs.org/docs/app/api-reference/config/next-config-js/cacheComponents
+   */
+  cacheComponents: true,
+  experimental: {
+    useTypeScriptCli: true,
+  },
+  /**
    * @docs
    * - https://nextjs.org/docs/app/guides/content-security-policy#without-nonces
    */
@@ -77,6 +86,12 @@ const nextConfig: NextConfig = {
       fullUrl: true,
     },
   },
+  /**
+   * Partial Prefetching prefetches only the static parts of a route by
+   * default. Requires cacheComponents.
+   * @docs https://nextjs.org/docs/app/api-reference/config/next-config-js/partialPrefetching
+   */
+  partialPrefetching: true,
   reactStrictMode: true,
   typedRoutes: true,
 };

@@ -1,2 +1,6 @@
 allowBuilds:
   sharp: true
+minimumReleaseAgeExclude:
+  - next
+  - '@next/*'
+  - '@typescript-eslint/*'

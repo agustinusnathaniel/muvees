@@ -1,5 +1,16 @@
 import { tmdbServerFetcherCore } from 'lib/services/tmdb/utils.server';
+import { cacheLife } from 'next/cache';
 import { type NextRequest, NextResponse } from 'next/server';
+
+async function fetchTmdbData(path: string, params: Record<string, string>) {
+  'use cache';
+  cacheLife('days');
+
+  return await tmdbServerFetcherCore({
+    params,
+    path,
+  });
+}
 
 export async function GET(
   request: NextRequest,
@@ -12,10 +23,7 @@ export async function GET(
 
   const requestPath = path && path.length > 0 ? `/${path.join('/')}` : '/';
 
-  const data = await tmdbServerFetcherCore({
-    params: queryParams,
-    path: requestPath,
-  });
+  const data = await fetchTmdbData(requestPath, queryParams);
 
   return NextResponse.json(data, {
     headers: {

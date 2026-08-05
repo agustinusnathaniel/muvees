@@ -1,5 +1,6 @@
 import { TV_SHOW_SEARCH_RESOURCE_PATH } from 'lib/services/tmdb/tv/list/constants';
 import { tmdbServerFetcher } from 'lib/services/tmdb/utils.server';
+import { cacheLife } from 'next/cache';
 
 import type {
   SearchTVShowParams,
@@ -8,10 +9,15 @@ import type {
   TVShowListType,
 } from './types';
 
-export const getTVShowByListType = (
+export async function getTVShowByListType(
   listType: TVShowListType,
   params?: TVShowListParams
-) => tmdbServerFetcher<TVShowListResponse>(`/tv/${listType}`, params);
+) {
+  'use cache';
+  cacheLife('hours');
+
+  return await tmdbServerFetcher<TVShowListResponse>(`/tv/${listType}`, params);
+}
 
 export const getTVShowSearchResultList = (params: SearchTVShowParams) =>
   tmdbServerFetcher<TVShowListResponse>(TV_SHOW_SEARCH_RESOURCE_PATH, params);

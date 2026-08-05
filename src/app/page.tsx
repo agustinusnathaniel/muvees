@@ -4,7 +4,7 @@ import { getTVShowByListType } from 'lib/services/tmdb/tv/list/index.server';
 
 export default async function Page() {
   const [popularMovieData, popularTvShowData] = await Promise.all([
-    getMovieListServer({ revalidate: 43_200, section: 'popular' }),
+    getMovieListServer({ section: 'popular' }),
     getTVShowByListType('popular'),
   ]);
 

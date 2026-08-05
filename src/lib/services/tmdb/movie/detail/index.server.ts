@@ -1,9 +1,13 @@
 import { tmdbServerFetcherCore } from 'lib/services/tmdb/utils.server';
+import { cacheLife } from 'next/cache';
 
 import type { MovieDetailResponse } from './types';
 
-export const getMovieDetailServer = (id: number) =>
-  tmdbServerFetcherCore<MovieDetailResponse>({
+export async function getMovieDetailServer(id: number) {
+  'use cache';
+  cacheLife('weeks');
+
+  return await tmdbServerFetcherCore<MovieDetailResponse>({
     path: `/movie/${id}`,
-    reqInit: { next: { revalidate: 604_800 } },
   });
+}

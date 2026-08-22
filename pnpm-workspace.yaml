@@ -4,8 +4,3 @@ minimumReleaseAgeExclude:
   - next
   - '@next/*'
   - '@typescript-eslint/*'
-  # TEMP: 2026-08-21 — prune once versions age past minimumReleaseAge
-  - framer-motion
-  - motion-dom
-  # TEMP: 2026-08-21 — transitive (browserslist data) flagged by frozen-install gate
-  - baseline-browser-mapping

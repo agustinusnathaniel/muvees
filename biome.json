@@ -42,7 +42,13 @@
         "useImageSize": "off"
       },
       "complexity": {
-        "noRedundantDefaultExport": "off"
+        "noRedundantDefaultExport": "off",
+        "noExcessiveLinesPerFunction": {
+          "level": "error",
+          "options": {
+            "maxLines": 60
+          }
+        }
       },
       "suspicious": {
         "noLeakedRender": "off",
@@ -62,6 +68,13 @@
           "level": "error",
           "options": {
             "syntax": "generic"
+          }
+        },
+        "noExcessiveLinesPerFile": {
+          "level": "error",
+          "options": {
+            "maxLines": 500,
+            "skipBlankLines": true
           }
         }
       }

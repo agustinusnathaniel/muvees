@@ -10,27 +10,28 @@ import debounce from 'lodash/debounce';
 import { usePathname, useRouter, useSearchParams } from 'next/navigation';
 import { Suspense, useCallback, useMemo } from 'react';
 
-const MultiSearchPageInner = () => {
-  const router = useRouter();
+function useMultiSearchParams() {
   const searchParams = useSearchParams();
-  const pathname = usePathname();
   const qPage = searchParams.get('page');
   const qQuery = searchParams.get('query');
   const page = qPage && Number(qPage) > 0 ? Number(qPage) : 1;
   const query = qQuery as string;
-
   const { data, isLoading } = useMultiSearchResult(
-    {
-      page,
-      query,
-    },
+    { page, query },
     query?.length > 0
   );
+  return { data, isLoading, page, query };
+}
 
+function useMultiSearchNavigation(
+  page: number,
+  data: { total_pages?: number } | undefined,
+  pathname: string | null,
+  router: ReturnType<typeof useRouter>
+) {
   const handleChangeQuery = useCallback(
     debounce((e: React.ChangeEvent<HTMLInputElement>) => {
       const queryParam = e.target.value ? `query=${e.target.value}&page=1` : '';
-
       router.push(`/search?${queryParam}`);
     }, 500),
     []
@@ -38,7 +39,7 @@ const MultiSearchPageInner = () => {
 
   const handleChangePage = useCallback(
     (updatedPage: number) => {
-      const queryParams = new URL(BASE_URL + pathname).searchParams;
+      const queryParams = new URL(BASE_URL + (pathname || '')).searchParams;
       queryParams.set('page', updatedPage.toString());
       router.push(`/search?${queryParams.toString()}`);
     },
@@ -49,10 +50,85 @@ const MultiSearchPageInner = () => {
     const updatedPage = page === data?.total_pages ? page : page + 1;
     handleChangePage(updatedPage);
   }, [data?.total_pages, handleChangePage, page]);
+
   const handleClickPrev = useCallback(() => {
     const updatedPage = page === 0 ? page : page - 1;
     handleChangePage(updatedPage);
   }, [handleChangePage, page]);
+
+  return {
+    handleChangePage,
+    handleChangeQuery,
+    handleClickNext,
+    handleClickPrev,
+  };
+}
+
+function SearchResults({
+  query,
+  data,
+  isLoading,
+  pageNavButtonProps,
+}: {
+  query: string;
+  data:
+    | {
+        total_results?: number;
+        results?: Array<{
+          id: number;
+          poster_path?: string;
+          profile_path?: string;
+          media_type: string;
+          title?: string;
+          name?: string;
+        }>;
+      }
+    | undefined;
+  isLoading: boolean;
+  pageNavButtonProps: PageNavButtonProps;
+}) {
+  if (!query || query.length === 0) {
+    return <Text textAlign="center">Type something...</Text>;
+  }
+  if (data?.total_results === 0) {
+    return <Text textAlign="center">No Result</Text>;
+  }
+  return (
+    <>
+      <PageNavButtons {...pageNavButtonProps} />
+      <Skeleton loading={!!isLoading} marginY={8}>
+        <Grid
+          columnGap={8}
+          rowGap={12}
+          templateColumns={[
+            'repeat(2, 1fr)',
+            'repeat(3, 1fr)',
+            'repeat(4, 1fr)',
+          ]}
+        >
+          {(data?.results ?? []).map((item) => (
+            <PosterCard
+              id={item.id}
+              imageUrl={item.poster_path ?? item.profile_path ?? ''}
+              key={`${item.media_type}-${item.id}`}
+              layout="grid"
+              mediaType={item.media_type as never}
+              name={item.title ?? item.name}
+            />
+          ))}
+        </Grid>
+      </Skeleton>
+      <PageNavButtons {...pageNavButtonProps} />
+    </>
+  );
+}
+
+const MultiSearchPageInner = () => {
+  const router = useRouter();
+  const pathname = usePathname();
+  const { data, isLoading, page, query } = useMultiSearchParams();
+  const { handleChangeQuery, handleClickNext, handleClickPrev } =
+    useMultiSearchNavigation(page, data, pathname, router);
 
   const pageNavButtonProps: PageNavButtonProps = useMemo(
     () => ({
@@ -65,51 +141,6 @@ const MultiSearchPageInner = () => {
     [data?.total_pages, handleClickNext, handleClickPrev, isLoading, page]
   );
 
-  const resultWrapper = useMemo(() => {
-    if (!query || query.length === 0) {
-      return <Text textAlign="center">Type something...</Text>;
-    }
-
-    if (data?.total_results === 0) {
-      return <Text textAlign="center">No Result</Text>;
-    }
-
-    return (
-      <>
-        <PageNavButtons {...pageNavButtonProps} />
-        <Skeleton loading={!!isLoading} marginY={8}>
-          <Grid
-            columnGap={8}
-            rowGap={12}
-            templateColumns={[
-              'repeat(2, 1fr)',
-              'repeat(3, 1fr)',
-              'repeat(4, 1fr)',
-            ]}
-          >
-            {data?.results.map((item) => (
-              <PosterCard
-                id={item.id}
-                imageUrl={item.poster_path ?? item.profile_path ?? ''}
-                key={`${item.media_type}-${item.id}`}
-                layout="grid"
-                mediaType={item.media_type}
-                name={item.title ?? item.name}
-              />
-            ))}
-          </Grid>
-        </Skeleton>
-        <PageNavButtons {...pageNavButtonProps} />
-      </>
-    );
-  }, [
-    data?.results,
-    data?.total_results,
-    isLoading,
-    pageNavButtonProps,
-    query,
-  ]);
-
   return (
     <Grid gap={4} paddingX={8}>
       <Input
@@ -120,7 +151,12 @@ const MultiSearchPageInner = () => {
         placeholder="Movie / TV Show / Person"
         type="text"
       />
-      {resultWrapper}
+      <SearchResults
+        data={data as never}
+        isLoading={isLoading}
+        pageNavButtonProps={pageNavButtonProps}
+        query={query}
+      />
     </Grid>
   );
 };

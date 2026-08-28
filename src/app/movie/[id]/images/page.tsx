@@ -1,1 +1,3 @@
-export { MovieImagesPage as default } from 'lib/pages/movie/images';
+import { MovieImagesPage } from 'lib/pages/movie/images';
+
+export default MovieImagesPage;

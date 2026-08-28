@@ -55,7 +55,7 @@
         "noUnnecessaryConditions": "off"
       },
       "performance": {
-        "noBarrelFile": "off",
+        "noBarrelFile": "error",
         "useTopLevelRegex": "error",
         "noJsxPropsBind": "off"
       },
@@ -97,6 +97,16 @@
         "rules": {
           "style": {
             "noDefaultExport": "off"
+          }
+        }
+      }
+    },
+    {
+      "includes": ["src/app/**/page.tsx"],
+      "linter": {
+        "rules": {
+          "style": {
+            "noExportedImports": "off"
           }
         }
       }

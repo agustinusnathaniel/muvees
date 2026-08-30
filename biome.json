@@ -42,14 +42,20 @@
         "useImageSize": "off"
       },
       "complexity": {
-        "noRedundantDefaultExport": "off"
+        "noRedundantDefaultExport": "off",
+        "noExcessiveLinesPerFunction": {
+          "level": "error",
+          "options": {
+            "maxLines": 60
+          }
+        }
       },
       "suspicious": {
         "noLeakedRender": "off",
         "noUnnecessaryConditions": "off"
       },
       "performance": {
-        "noBarrelFile": "off",
+        "noBarrelFile": "error",
         "useTopLevelRegex": "error",
         "noJsxPropsBind": "off"
       },
@@ -62,6 +68,13 @@
           "level": "error",
           "options": {
             "syntax": "generic"
+          }
+        },
+        "noExcessiveLinesPerFile": {
+          "level": "error",
+          "options": {
+            "maxLines": 500,
+            "skipBlankLines": true
           }
         }
       }
@@ -84,6 +97,16 @@
         "rules": {
           "style": {
             "noDefaultExport": "off"
+          }
+        }
+      }
+    },
+    {
+      "includes": ["src/app/**/page.tsx"],
+      "linter": {
+        "rules": {
+          "performance": {
+            "noBarrelFile": "off"
           }
         }
       }

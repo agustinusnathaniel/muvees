@@ -105,8 +105,8 @@
       "includes": ["src/app/**/page.tsx"],
       "linter": {
         "rules": {
-          "style": {
-            "noExportedImports": "off"
+          "performance": {
+            "noBarrelFile": "off"
           }
         }
       }
